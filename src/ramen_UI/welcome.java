@@ -55,17 +55,21 @@ public class welcome extends JFrame {
 		panel.setBounds(146, 390, 481, 209);
 		contentPane.add(panel);
 		
-		JButton btnNewButton = new JButton("Administrator");
+		final JButton btnNewButton = new JButton("Administrator");
 		btnNewButton.setFont(new Font("Times New Roman", Font.PLAIN, 30));
 		btnNewButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
+			public void actionPerformed(ActionEvent e) {
+				if(e.getSource() == btnNewButton) {
+					setVisible(false);
+					JFrame Backstagetest= new Backstagetest();
+				}
 			}
 		});
 		panel.setLayout(null);
 		btnNewButton.setBounds(26, 44, 200, 123);
 		panel.add(btnNewButton);
 		
-		JButton btnCustomer = new JButton("Customer");
+		final JButton btnCustomer = new JButton("Customer");
 		btnCustomer.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(e.getSource() == btnCustomer) {

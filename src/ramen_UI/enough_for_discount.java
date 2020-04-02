@@ -69,7 +69,7 @@ public class enough_for_discount extends JFrame {
 		lblPlease.setBounds(62, 360, 660, 35);
 		contentPane.add(lblPlease);
 		
-		JButton btnNewButton = new JButton("OK, continue paying with discount");
+		final JButton btnNewButton = new JButton("OK, continue paying with discount");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(e.getSource() == btnNewButton) {

@@ -223,7 +223,7 @@ public class order_ramen extends JFrame {
 		lblnoAnd.setBounds(447, 431, 257, 23);
 		panel.add(lblnoAnd);
 		
-		JButton btnNext = new JButton("Have Completed. NEXT");
+		final JButton btnNext = new JButton("Have Completed. NEXT");
 		btnNext.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(e.getSource() == btnNext) {

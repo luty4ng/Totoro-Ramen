@@ -1,0 +1,82 @@
+package ramen_UI;
+
+import java.awt.BorderLayout;
+import java.awt.EventQueue;
+import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+import javax.swing.JButton;
+import javax.swing.JRadioButton;
+
+public class view_states extends JFrame {
+
+	private JPanel contentPane;
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					view_states frame = new view_states();
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the frame.
+	 */
+	public view_states() {
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(740, 200, 800, 740);
+		contentPane = new JPanel();
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setContentPane(contentPane);
+		contentPane.setLayout(null);
+		
+		JLabel lblNewLabel = new JLabel("View states");
+		lblNewLabel.setBounds(200, 75, 400, 100);
+		lblNewLabel.setFont(new Font("Times New Roman", Font.PLAIN, 40));
+		contentPane.add(lblNewLabel);
+		
+		JButton btnNewButton = new JButton("sales in past week");
+		btnNewButton.setBounds(200, 200, 400, 100);
+		btnNewButton.setFont(new Font("Times New Roman", Font.PLAIN, 40));
+		contentPane.add(btnNewButton);
+		
+		JButton btnViewStates = new JButton("spicious survey");
+		btnViewStates.setBounds(200, 350, 400, 100);
+		btnViewStates.setFont(new Font("Times New Roman", Font.PLAIN, 40));
+		contentPane.add(btnViewStates);
+		
+		final JButton btnBack = new JButton("back");
+		btnBack.setFont(new Font("Times New Roman", Font.PLAIN, 30));
+		contentPane.add(btnBack);
+		btnBack.setBounds(200, 568, 200, 55);
+		btnBack.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if(e.getSource() == btnBack) {
+					setVisible(false);
+					JFrame Backstagetest = new Backstagetest();
+				}
+			}
+		});
+		
+		JRadioButton rdbtnNewRadioButton = new JRadioButton("weekly report generation");
+		rdbtnNewRadioButton.setFont(new Font("Times New Roman", Font.PLAIN, 30));
+		rdbtnNewRadioButton.setBounds(200, 475, 400, 40);
+		contentPane.add(rdbtnNewRadioButton);
+		
+		setVisible(true);
+	}
+}

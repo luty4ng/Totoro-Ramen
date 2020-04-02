@@ -15,6 +15,9 @@ import java.awt.Color;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import javax.swing.JCheckBox;
@@ -66,38 +69,40 @@ public class pay_ment_interface extends JFrame {
                 "Price"
         };
         Object [][] data={
-                {"zhp",20,1},
-                {"zyh",2,1},
-                {"zk",2,2},
-                {"zhp",20,1},
-                {"zyh",2,1},
-                {"zk",2,2},
-                {"zhp",20,1}
+                {"zhp","20","1"},
+                {"zyh","2","1"},
+                {"zk","2","2"},
+                {"zhp","20","1"},
+                {"zyh","2","1"},
+                {"zk","2","2"},
+                {"zhp","20","1"}
         };
         JTable jTable=new JTable(data,columnName);
         jTable.setRowHeight(25);
         scrollPane.setViewportView(jTable);
         
-        JButton btnNewButton = new JButton("pay by bank card");
-        btnNewButton.addMouseListener(new MouseAdapter() {
-        	@Override
-        	public void mouseClicked(MouseEvent arg0) {
-        		setVisible(false);
-        		JFrame deal_complete = new deal_complete();
-        	}
-        });
+        final JButton btnNewButton = new JButton("pay by bank card");
+        btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if(e.getSource() == btnNewButton) {
+					setVisible(false);
+					JFrame deal_complete = new deal_complete();
+				}
+			}
+		});
         btnNewButton.setFont(new Font("Times New Roman", Font.BOLD, 20));
         btnNewButton.setBounds(36, 609, 334, 59);
         contentPane.add(btnNewButton);
         
-        JButton btnConfirm = new JButton("pay by cash");
-        btnConfirm.addMouseListener(new MouseAdapter() {
-        	@Override
-        	public void mouseClicked(MouseEvent e) {
-        		setVisible(false);
-        		JFrame deal_complete = new deal_complete();
-        	}
-        });
+        final JButton btnConfirm = new JButton("pay by cash");
+        btnConfirm.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if(e.getSource() == btnConfirm) {
+					setVisible(false);
+					JFrame deal_complete = new deal_complete();
+				}
+			}
+		});
         btnConfirm.setFont(new Font("Times New Roman", Font.BOLD, 20));
         btnConfirm.setBounds(406, 609, 334, 59);
         contentPane.add(btnConfirm);

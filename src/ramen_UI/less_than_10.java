@@ -72,7 +72,7 @@ public class less_than_10 extends JFrame {
 		lblPlease.setBounds(62, 360, 660, 35);
 		contentPane.add(lblPlease);
 		
-		JButton btnNewButton = new JButton("OK, continue paying");
+		final JButton btnNewButton = new JButton("OK, continue paying");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(e.getSource() == btnNewButton) {

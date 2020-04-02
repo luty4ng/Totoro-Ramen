@@ -115,15 +115,15 @@ public class add_on extends JFrame {
 		label_3.setBounds(270, 344, 150, 26);
 		panel.add(label_3);
 		
-		Add_on_numbers numbers = new Add_on_numbers(); // variable numbers record the changes of numbers of add_on
+		final Add_on_numbers numbers = new Add_on_numbers(); // variable numbers record the changes of numbers of add_on
 		
-		JTextArea textArea1 = new JTextArea();     // Extra Nori
+		final JTextArea textArea1 = new JTextArea();     // Extra Nori
 		textArea1.setFont(new Font("Times New Roman", Font.PLAIN, 26));
 		textArea1.setText(Integer.toString(numbers.number1));
 		textArea1.setBounds(493, 74, 40, 35);
 		panel.add(textArea1);
 		
-		JButton button1 = new JButton("-"); 
+		final JButton button1 = new JButton("-"); 
 		button1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(e.getSource() == button1) {
@@ -138,7 +138,7 @@ public class add_on extends JFrame {
 		button1.setBounds(546, 74, 45, 35);
 		panel.add(button1);
 		
-		JButton button2 = new JButton("+");
+		final JButton button2 = new JButton("+");
 		button2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(e.getSource() == button2) {
@@ -151,13 +151,13 @@ public class add_on extends JFrame {
 		button2.setBounds(596, 74, 45, 35);
 		panel.add(button2);
 		
-		JTextArea textArea2 = new JTextArea();     // Extra boiled egg
+		final JTextArea textArea2 = new JTextArea();     // Extra boiled egg
 		textArea2.setFont(new Font("Times New Roman", Font.PLAIN, 26));
 		textArea2.setText(Integer.toString(numbers.number2));
 		textArea2.setBounds(493, 164, 40, 35);
 		panel.add(textArea2);
 		
-		JButton button3 = new JButton("-"); 
+		final JButton button3 = new JButton("-"); 
 		button3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(e.getSource() == button3) {
@@ -172,7 +172,7 @@ public class add_on extends JFrame {
 		button3.setBounds(546, 164, 45, 35);
 		panel.add(button3);
 		
-		JButton button4 = new JButton("+");
+		final JButton button4 = new JButton("+");
 		button4.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(e.getSource() == button4) {
@@ -185,13 +185,13 @@ public class add_on extends JFrame {
 		button4.setBounds(596, 164, 45, 35);
 		panel.add(button4);
 		
-		JTextArea textArea3 = new JTextArea();     // Bamboo shoots
+		final JTextArea textArea3 = new JTextArea();     // Bamboo shoots
 		textArea3.setFont(new Font("Times New Roman", Font.PLAIN, 26));
 		textArea3.setText(Integer.toString(numbers.number3));
 		textArea3.setBounds(493, 254, 40, 35);
 		panel.add(textArea3);
 		
-		JButton button5 = new JButton("-"); 
+		final JButton button5 = new JButton("-"); 
 		button5.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(e.getSource() == button5) {
@@ -206,7 +206,7 @@ public class add_on extends JFrame {
 		button5.setBounds(546, 254, 45, 35);
 		panel.add(button5);
 		
-		JButton button6 = new JButton("+");
+		final JButton button6 = new JButton("+");
 		button6.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(e.getSource() == button6) {
@@ -219,13 +219,13 @@ public class add_on extends JFrame {
 		button6.setBounds(596, 254, 45, 35);
 		panel.add(button6);
 		
-		JTextArea textArea4 = new JTextArea();     // Extra Chashu
+		final JTextArea textArea4 = new JTextArea();     // Extra Chashu
 		textArea4.setFont(new Font("Times New Roman", Font.PLAIN, 26));
 		textArea4.setText(Integer.toString(numbers.number4));
 		textArea4.setBounds(493, 344, 40, 35);
 		panel.add(textArea4);
 		
-		JButton button7 = new JButton("-"); 
+		final JButton button7 = new JButton("-"); 
 		button7.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(e.getSource() == button7) {
@@ -240,7 +240,7 @@ public class add_on extends JFrame {
 		button7.setBounds(546, 344, 45, 35);
 		panel.add(button7);
 		
-		JButton button8 = new JButton("+");
+		final JButton button8 = new JButton("+");
 		button8.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(e.getSource() == button8) {
@@ -253,19 +253,20 @@ public class add_on extends JFrame {
 		button8.setBounds(596, 344, 45, 35);
 		panel.add(button8);
 		
-		JButton btnNext = new JButton("Have Completed. NEXT");
-		btnNext.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				setVisible(false);
-				JFrame confirm_order= new confirm_order();
+		final JButton btnNext = new JButton("Have Completed. NEXT");
+		btnNext.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if(e.getSource() == btnNext) {
+					setVisible(false);
+					JFrame confirm_order= new confirm_order();
+				}
 			}
 		});
 		btnNext.setFont(new Font("Times New Roman", Font.BOLD, 26));
 		btnNext.setBounds(401, 615, 305, 52);
 		contentPane.add(btnNext);
 		
-		JButton btnBack = new JButton("Back");
+		final JButton btnBack = new JButton("Back");
 		btnBack.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(e.getSource() == btnBack) {
