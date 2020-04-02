@@ -9,7 +9,7 @@ public class DataProcessor {
 	BufferedWriter csvWriter;
 	Dictionary dict;
 	
-	//���캯��
+	//	Constructor: define which csv file you want to access
 	public DataProcessor(String fileName) {
 		csvFile = new File(fileName);
 		System.out.println(csvFile.exists());
@@ -26,7 +26,7 @@ public class DataProcessor {
 		}
 	}
 	
-	// ��������
+	// Destructor: close reader & writer
 	public void finalize()
 	{
 		try {
@@ -37,7 +37,7 @@ public class DataProcessor {
 		}
 	}
 	
-	// ��������ȡ
+	// Read all the contents in target csv file
 	public ArrayList<String> Read()
 	{
 		String temp;
@@ -57,6 +57,7 @@ public class DataProcessor {
 		return result;
 	}
 	
+	// Query the contents by Row&Colum
 	public  String Read(int row, int col){
         try {           
          //BufferedReader reade = new BufferedReader(new FileReader("..\\..\\data\\material.csv"));           
@@ -79,7 +80,7 @@ public class DataProcessor {
 			return "none";
   }
 	
-	// ������ȡ Ŀǰ��֧�ֵ�������ѯ
+	// Query the contents by condition, e.g Read("Age=20")
 	public ArrayList<String> Read(String condition) {
 		String temp;
 		ArrayList<String> result = new ArrayList<String>();
@@ -113,7 +114,7 @@ public class DataProcessor {
 	}
 
 
-	// ����д��
+	// Write your contents in csv file
 	public void Write() {
 		try {
 			csvWriter = new BufferedWriter(new FileWriter(csvFile));
@@ -122,7 +123,7 @@ public class DataProcessor {
 		}
 	}
 	
-	// ���Ŀ���ļ�ÿ��? ����-���? �Ķ�Ӧ��ϵ ������
+	// Check the mapping between index and attributes of csv first line
 	private void CheckDict()
 	{
 		for (Enumeration i = dict.keys(); i.hasMoreElements();)
@@ -132,7 +133,7 @@ public class DataProcessor {
 
 	}
 	
-	// ���Ժ��� ����д
+	// just a test function write whatever u want:)
 	public void test() {
 		String[] a = "yes;".split(";");
 		String[] b = "yes".split(";");
@@ -142,7 +143,7 @@ public class DataProcessor {
 	
 	
 	public static void main(String[] args) {
-		// Example
+		// Usage Example
 		DataProcessor csv = new DataProcessor("data/test.csv");
 		//ArrayList<String> result = csv.Read();
 		ArrayList<String> result = csv.Read("Age=20");
