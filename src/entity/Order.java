@@ -5,15 +5,15 @@ import java.util.Date;
 
 public class Order {
 	private String oID;
-	private Date dateOrder;
+	private Date orderTime;
 	private String diningOption;
 	private double totalPrice;
 	private Member member;
-	
+	public static 
 	
 	private ArrayList<NoodleOrder> noodleOrder;
 	
-	public Order() {
+	public Order(Date dateOrder) {
 		
 	}
 

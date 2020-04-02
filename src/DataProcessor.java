@@ -54,6 +54,28 @@ public class DataProcessor {
 		return result;
 	}
 	
+	public  String Read(int row, int col){
+        try {           
+         //BufferedReader reade = new BufferedReader(new FileReader("..\\..\\data\\material.csv"));           
+         String line = null;
+         int index=0;
+         while((line=csvReader.readLine())!=null){
+             String item[] = line.split(",");                
+          if(index==row-1){
+              if(item.length>=col-1){
+                  String last = item[col-1];
+					System.out.println(last);
+                  return last;      
+              }
+          }
+          index++;
+          }      
+         } catch (Exception e) {
+          e.printStackTrace();
+			}
+			return "none";
+  }
+	
 	// 条件读取 目前仅支持单条件查询
 	public ArrayList<String> Read(String condition) {
 		String temp;
