@@ -1,3 +1,6 @@
+package entity;
+
+
 public class NoodleOrder {
     private String nID = "zero";
 
@@ -75,4 +78,5 @@ public class NoodleOrder {
                          + extraBoiledEgg*(Double.parseDouble(reader.read(5,3)));
         return this.price;
     }
+    
 }
