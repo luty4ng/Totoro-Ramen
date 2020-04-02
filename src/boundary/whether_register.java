@@ -1,4 +1,4 @@
-package ramen_UI;
+package boundary;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;

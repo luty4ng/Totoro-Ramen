@@ -1,4 +1,4 @@
-package ramen_UI;
+package boundary;
 
 public class Add_on_numbers {
     public static int number1 = 0;
