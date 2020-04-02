@@ -59,7 +59,7 @@ public class VIP_log_in extends JFrame {
 		contentPane.add(textField);
 		textField.setColumns(10);
 		
-		JButton btnBack = new JButton("Back");
+		final JButton btnBack = new JButton("Back");
 		btnBack.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(e.getSource() == btnBack) {
@@ -72,14 +72,15 @@ public class VIP_log_in extends JFrame {
 		btnBack.setBounds(65, 470, 290, 70);
 		contentPane.add(btnBack);
 		
-		JButton btnConfirm = new JButton("Confirm!");
-        btnConfirm.addMouseListener(new MouseAdapter() {
-        	@Override
-        	public void mouseClicked(MouseEvent e) {
-        		setVisible(false);
-				JFrame VIP_register= new VIP_register();
-        	}
-        });
+		final JButton btnConfirm = new JButton("Confirm!");
+        btnConfirm.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if(e.getSource() == btnConfirm) {
+					setVisible(false);
+					JFrame less_than_10= new less_than_10();
+				}
+			}
+		});
         btnConfirm.setFont(new Font("Times New Roman", Font.BOLD, 38));
         btnConfirm.setBounds(421, 470, 290, 70);
         contentPane.add(btnConfirm);

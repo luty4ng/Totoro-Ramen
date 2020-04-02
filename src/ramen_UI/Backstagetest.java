@@ -12,7 +12,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-public class whether_register extends JFrame {
+public class Backstagetest extends JFrame {
 
 	private JPanel contentPane;
 
@@ -23,7 +23,7 @@ public class whether_register extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					whether_register frame = new whether_register();
+					Backstagetest frame = new Backstagetest();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -35,53 +35,55 @@ public class whether_register extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public whether_register() {
-		setTitle("Whether register or not?");
+	public Backstagetest() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(740, 200, 800, 740);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		contentPane.setLayout(new BorderLayout(0, 0));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JLabel lblThePriceOf = new JLabel("Whould you like to register as a VIP member?");
-		lblThePriceOf.setFont(new Font("Times New Roman", Font.PLAIN, 35));
-		lblThePriceOf.setBounds(69, 122, 661, 35);
-		contentPane.add(lblThePriceOf);
+		JLabel lblNewLabel = new JLabel("Backstage managment");
+		lblNewLabel.setFont(new Font("Times New Roman", Font.PLAIN, 40));
+		lblNewLabel.setBounds(200, 75, 400, 100);
+		contentPane.add(lblNewLabel);
 		
-		JButton btnNewButton = new JButton("Yes, register now!");
+		JButton btnNewButton = new JButton("modify menu");
 		btnNewButton.setFont(new Font("Times New Roman", Font.PLAIN, 40));
+		btnNewButton.setBounds(200, 250, 400, 100);
+		contentPane.add(btnNewButton);
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				setVisible(false);
-				JFrame VIP_register= new VIP_register();
+				JFrame modify_menu = new modify_menu();
 			}
 		});
-		btnNewButton.setBounds(219, 260, 349, 74);
-		contentPane.add(btnNewButton);
 		
-		JButton btnNoIAmnt = new JButton("No, skip it");
-		btnNoIAmnt.setFont(new Font("Times New Roman", Font.PLAIN, 40));
-		btnNoIAmnt.addActionListener(new ActionListener() {
+		final JButton btnViewStates = new JButton("view states");
+		btnViewStates.setFont(new Font("Times New Roman", Font.PLAIN, 40));
+		btnViewStates.setBounds(200, 400, 400, 100);
+		contentPane.add(btnViewStates);
+		btnViewStates.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				if(e.getSource() == btnViewStates) {
 				setVisible(false);
-				JFrame pay_ment_interface= new pay_ment_interface();
+				JFrame view_states = new view_states();
+				}
 			}
 		});
-		btnNoIAmnt.setBounds(219, 371, 349, 74);
-		contentPane.add(btnNoIAmnt);
 		
-		final JButton btnBack = new JButton("Back");
+		final JButton btnBack = new JButton("back");
 		btnBack.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(e.getSource() == btnBack) {
 					setVisible(false);
-					JFrame loyalty_scheme= new loyalty_scheme();
+					JFrame welcome = new welcome();
 				}
 			}
 		});
-		btnBack.setFont(new Font("Times New Roman", Font.BOLD, 38));
-		btnBack.setBounds(313, 546, 155, 70);
+		btnBack.setFont(new Font("Times New Roman", Font.PLAIN, 30));
+		btnBack.setBounds(200, 568, 200, 55);
 		contentPane.add(btnBack);
 		
 		setVisible(true);

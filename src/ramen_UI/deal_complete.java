@@ -55,7 +55,7 @@ public class deal_complete extends JFrame {
 		panel.setBounds(177, 390, 436, 209);
 		contentPane.add(panel);
 		
-		JButton finish = new JButton("finish");
+		final JButton finish = new JButton("finish");
 		finish.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(e.getSource() == finish) {

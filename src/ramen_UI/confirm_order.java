@@ -15,6 +15,9 @@ import java.awt.Color;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import javax.swing.JCheckBox;
@@ -65,40 +68,42 @@ public class confirm_order extends JFrame {
                 "Number",
                 "Price"
         };
-        Object [][] data={
-                {"zhp",20,1},
-                {"zyh",2,1},
-                {"zk",2,2},
-                {"zhp",20,1},
-                {"zyh",2,1},
-                {"zk",2,2},
-                {"zhp",20,1}
+        String [][] data={
+                {"zhp","20","1"},
+                {"zyh","2","1"},
+                {"zk","2","2"},
+                {"zhp","20","1"},
+                {"zyh","2","1"},
+                {"zk","2","2"},
+                {"zhp","20","1"}
         };
         JTable jTable=new JTable(data,columnName);
         jTable.setFont(new Font("Times New Roman", Font.PLAIN, 15));
         jTable.setRowHeight(25);
         scrollPane.setViewportView(jTable);
         
-        JButton btnNewButton = new JButton("Add another bowl of noddles");
-        btnNewButton.addMouseListener(new MouseAdapter() {
-        	@Override
-        	public void mouseClicked(MouseEvent arg0) {
-        		setVisible(false);
-				JFrame order_ramen= new order_ramen();
-        	}
-        });
+        final JButton btnNewButton = new JButton("Add another bowl of noddles");
+        btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if(e.getSource() == btnNewButton) {
+					setVisible(false);
+					JFrame order_ramen= new order_ramen();
+				}
+			}
+		});
         btnNewButton.setFont(new Font("Times New Roman", Font.BOLD, 25));
         btnNewButton.setBounds(36, 609, 350, 59);
         contentPane.add(btnNewButton);
         
-        JButton btnConfirm = new JButton("Confirm!");
-        btnConfirm.addMouseListener(new MouseAdapter() {
-        	@Override
-        	public void mouseClicked(MouseEvent e) {
-        		setVisible(false);
-				JFrame loyalty_scheme= new loyalty_scheme();
-        	}
-        });
+        final JButton btnConfirm = new JButton("Confirm!");
+        btnConfirm.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if(e.getSource() == btnConfirm) {
+					setVisible(false);
+					JFrame loyalty_scheme= new loyalty_scheme();
+				}
+			}
+		});
         btnConfirm.setFont(new Font("Times New Roman", Font.BOLD, 25));
         btnConfirm.setBounds(406, 609, 350, 59);
         contentPane.add(btnConfirm);
