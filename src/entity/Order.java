@@ -1,5 +1,6 @@
 package entity;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Random;
@@ -30,14 +31,6 @@ public class Order {
 		this.totalPrice = 0.0;
 	}
 
-	public String getoID() {
-		return oID;
-	}
-
-	public void setoID(String oID) {
-		this.oID = oID;
-	}
-
 	public Date getOrderTime() {
 		return orderTime;
 	}
@@ -66,12 +59,18 @@ public class Order {
 		return member;
 	}
 
-	public void setMember(Member member) {
-		this.member = member;
+	public boolean setMember(String memberNumber) {
+		//this.member = new Member(memberNumber);
+		if(this.member == null)
+			return false;
+		else
+			return true;
 	}
 	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
+		File csvFile = new File("../../data/configure.csv");
+		csvFile.exists();
 		Date date=new Date();
 		date.UTC(1999, 4, 30, 1, 2, 3);
 		Order order = new Order(date);

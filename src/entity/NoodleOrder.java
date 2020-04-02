@@ -78,4 +78,5 @@ public class NoodleOrder {
                          + extraBoiledEgg*(Double.parseDouble(reader.read(5,3)));
         return this.price;
     }
+    
 }
