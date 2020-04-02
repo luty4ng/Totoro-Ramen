@@ -1,3 +1,6 @@
+package entity;
+
+
 public class NoodleOrder {
     private String nID = "zero";
 
