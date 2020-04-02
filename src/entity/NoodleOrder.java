@@ -1,7 +1,10 @@
+package entity;
+
+
 public class NoodleOrder {
     private String nID = "zero";
 
-    //必选区
+    //Fixed price
     private String soup = "no_soupw";
     private String noodles = "no_noodle";
     private String springOnion = "no_onion";
@@ -11,7 +14,7 @@ public class NoodleOrder {
     private String boiledEgg;
 
     private int spiciness;//1--5
-    //加料区
+    //Add-ons
     private int extraNori = 0;
     private int extraBoiledEgg = 0;
     private int bambooShoots = 0;
@@ -19,8 +22,7 @@ public class NoodleOrder {
 
     private double price = 0;
     
-    //这里应该需要修改csv文件中的食材数量，还未添加。
-    public NoodleOrder(int _n,  //这个订单的第几个子订单
+    public NoodleOrder(int _n,  //The nth suborder of the order
                        String Oid, 
                        String _soup, 
                        String _noodles, 
@@ -46,8 +48,8 @@ public class NoodleOrder {
         }
     }
     
-    //额外加料
-    //这里需要添加修改csv文件中食材数量的功能 还未添加
+    //Add-ones
+    //should modify the number of the moterial,haven't done
     public String add(int _extraNori,
                       int _bambooShoots,
                       int _extraBoiledEgg,
@@ -67,8 +69,7 @@ public class NoodleOrder {
 	public String getId() {
 		return nID;
     }
-    
-    //这里应该添加向csv读取加个的功能
+  
     public double price(){
         CSVUtil reader = new CSVUtil();
         this.price = 9.9 + extraNori*(Double.parseDouble(reader.read(2,3))) 

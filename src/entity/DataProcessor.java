@@ -1,3 +1,5 @@
+package entity;
+
 import java.io.*;
 import java.util.*;
 
@@ -7,9 +9,10 @@ public class DataProcessor {
 	BufferedWriter csvWriter;
 	Dictionary dict;
 	
-	//¹¹Ôìº¯Êý
+	//ï¿½ï¿½ï¿½ìº¯ï¿½ï¿½
 	public DataProcessor(String fileName) {
 		csvFile = new File(fileName);
+		System.out.println(csvFile.exists());
 		dict = new Hashtable();
 		try {
 			csvReader = new BufferedReader(new FileReader(csvFile));
@@ -23,7 +26,7 @@ public class DataProcessor {
 		}
 	}
 	
-	// Îö¹¹º¯Êý
+	// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	public void finalize()
 	{
 		try {
@@ -34,7 +37,7 @@ public class DataProcessor {
 		}
 	}
 	
-	// ÎÞÌõ¼þ¶ÁÈ¡
+	// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È¡
 	public ArrayList<String> Read()
 	{
 		String temp;
@@ -54,7 +57,29 @@ public class DataProcessor {
 		return result;
 	}
 	
-	// Ìõ¼þ¶ÁÈ¡ Ä¿Ç°½öÖ§³Öµ¥Ìõ¼þ²éÑ¯
+	public  String Read(int row, int col){
+        try {           
+         //BufferedReader reade = new BufferedReader(new FileReader("..\\..\\data\\material.csv"));           
+         String line = null;
+         int index=0;
+         while((line=csvReader.readLine())!=null){
+             String item[] = line.split(",");                
+          if(index==row-1){
+              if(item.length>=col-1){
+                  String last = item[col-1];
+					System.out.println(last);
+                  return last;      
+              }
+          }
+          index++;
+          }      
+         } catch (Exception e) {
+          e.printStackTrace();
+			}
+			return "none";
+  }
+	
+	// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È¡ Ä¿Ç°ï¿½ï¿½Ö§ï¿½Öµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ñ¯
 	public ArrayList<String> Read(String condition) {
 		String temp;
 		ArrayList<String> result = new ArrayList<String>();
@@ -88,7 +113,7 @@ public class DataProcessor {
 	}
 
 
-	// Êý¾ÝÐ´Èë
+	// ï¿½ï¿½ï¿½ï¿½Ð´ï¿½ï¿½
 	public void Write() {
 		try {
 			csvWriter = new BufferedWriter(new FileWriter(csvFile));
@@ -97,7 +122,7 @@ public class DataProcessor {
 		}
 	}
 	
-	// ¼ì²éÄ¿±êÎÄ¼þÃ¿ÁÐ Ãû³Æ-ÐòºÅ µÄ¶ÔÓ¦¹ØÏµ ²âÊÔÓÃ
+	// ï¿½ï¿½ï¿½Ä¿ï¿½ï¿½ï¿½Ä¼ï¿½Ã¿ï¿½ï¿? ï¿½ï¿½ï¿½ï¿½-ï¿½ï¿½ï¿? ï¿½Ä¶ï¿½Ó¦ï¿½ï¿½Ïµ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	private void CheckDict()
 	{
 		for (Enumeration i = dict.keys(); i.hasMoreElements();)
@@ -107,7 +132,7 @@ public class DataProcessor {
 
 	}
 	
-	// ²âÊÔº¯Êý ËæÒâÐ´
+	// ï¿½ï¿½ï¿½Ôºï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ð´
 	public void test() {
 		String[] a = "yes;".split(";");
 		String[] b = "yes".split(";");
