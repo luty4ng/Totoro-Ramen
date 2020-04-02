@@ -60,7 +60,6 @@ public class DataProcessor {
 	// Query the contents by Row&Colum
 	public  String Read(int row, int col){
         try {           
-         //BufferedReader reade = new BufferedReader(new FileReader("..\\..\\data\\material.csv"));           
          String line = null;
          int index=0;
          while((line=csvReader.readLine())!=null){
@@ -149,6 +148,7 @@ public class DataProcessor {
 		ArrayList<String> result = csv.Read("Age=20");
 		for(String i:result)
 			System.out.println(i);
+
 		
 	}
 }
