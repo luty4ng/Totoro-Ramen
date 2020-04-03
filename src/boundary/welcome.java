@@ -5,12 +5,17 @@ import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Date;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
+
+import boundary.Backstagetest;
+import entity.Order;
+
 import javax.swing.JLabel;
 
 public class welcome extends JFrame {
@@ -37,6 +42,7 @@ public class welcome extends JFrame {
 	 * Create the frame.
 	 */
 	public welcome() {
+//		Date orderTime;
 		setTitle("Welcome You");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(740, 200, 800, 740);
@@ -58,7 +64,11 @@ public class welcome extends JFrame {
 		JButton btnNewButton = new JButton("Administrator");
 		btnNewButton.setFont(new Font("Times New Roman", Font.PLAIN, 30));
 		btnNewButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
+			public void actionPerformed(ActionEvent e) {
+				if(e.getSource() == btnNewButton) {
+					setVisible(false);
+					JFrame Backstagetest= new Backstagetest();
+				}
 			}
 		});
 		panel.setLayout(null);
@@ -69,8 +79,11 @@ public class welcome extends JFrame {
 		btnCustomer.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(e.getSource() == btnCustomer) {
+					Date orderTime = new Date();
+//					System.out.print(orderTime);
+					Order order = new Order(orderTime);
 					setVisible(false);
-					JFrame order_ramen= new order_ramen();
+					JFrame order_ramen= new order_ramen(order);
 				}
 			}
 		});
@@ -85,9 +98,9 @@ public class welcome extends JFrame {
 		contentPane.add(lblWhatIsYourIdentity);
 		
 		JLabel lblNewLabel = new JLabel("Find Delicacy Here");
-		lblNewLabel.setFont(new Font("Edwardian Script ITC", Font.PLAIN, 42));
+		lblNewLabel.setFont(new Font("MV Boli", Font.PLAIN, 42));
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel.setBounds(243, 188, 305, 64);
+		lblNewLabel.setBounds(204, 188, 384, 64);
 		contentPane.add(lblNewLabel);
 		
 		setVisible(true);

@@ -13,6 +13,10 @@ import javax.swing.JTable;
 import javax.swing.border.EtchedBorder;
 import java.awt.Color;
 import javax.swing.table.DefaultTableModel;
+
+import entity.NoodleOrder;
+import entity.Order;
+
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import java.awt.event.MouseAdapter;
@@ -20,31 +24,33 @@ import java.awt.event.MouseEvent;
 import javax.swing.JCheckBox;
 
 public class confirm_order extends JFrame {
-	//调用order中getOrderDetail方法，获得二维数组
-	//调用order中的set方法设置diningOption,并且展示totalPrice
-	//并一路传order到pay_ment_interface
-	private JPanel contentPane;
 
+	private JPanel contentPane;
+	private Order order;
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					confirm_order frame = new confirm_order();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+//	public static void main(String[] args) {
+//		EventQueue.invokeLater(new Runnable() {
+//			public void run() {
+//				try {
+//					confirm_order frame = new confirm_order();
+//					frame.setVisible(true);
+//				} catch (Exception e) {
+//					e.printStackTrace();
+//				}
+//			}
+//		});
+//	}
 
 	/**
 	 * Create the frame.
+	 * @param noodle 
 	 */
-	public confirm_order() {
+	public confirm_order(Order order) {
+		this.order = order;
+		this.order.setDiningOption("Eat In");
+		// TODO Auto-generated constructor stub
 		setTitle("Confirm your order");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(740, 200, 800, 740);
@@ -62,21 +68,15 @@ public class confirm_order extends JFrame {
 		scrollPane.setBounds(25, 77, 721, 412);
 		contentPane.add(scrollPane);
 
+		String[][] orderDetail = order.getOrderDetail();
+		double price = order.getTotalPrice();
+		System.out.print(orderDetail);
 	    String [] columnName = {
 	            "Items",
                 "Number",
                 "Price"
         };
-        Object [][] data={
-                {"zhp",20,1},
-                {"zyh",2,1},
-                {"zk",2,2},
-                {"zhp",20,1},
-                {"zyh",2,1},
-                {"zk",2,2},
-                {"zhp",20,1}
-        };
-        JTable jTable=new JTable(data,columnName);
+        JTable jTable=new JTable(orderDetail,columnName);
         jTable.setFont(new Font("Times New Roman", Font.PLAIN, 15));
         jTable.setRowHeight(25);
         scrollPane.setViewportView(jTable);
@@ -86,7 +86,7 @@ public class confirm_order extends JFrame {
         	@Override
         	public void mouseClicked(MouseEvent arg0) {
         		setVisible(false);
-				JFrame order_ramen= new order_ramen();
+				JFrame order_ramen= new order_ramen(order);
         	}
         });
         btnNewButton.setFont(new Font("Times New Roman", Font.BOLD, 25));
@@ -98,7 +98,9 @@ public class confirm_order extends JFrame {
         	@Override
         	public void mouseClicked(MouseEvent e) {
         		setVisible(false);
-				JFrame loyalty_scheme= new loyalty_scheme();
+        		order.printOrder();//will be remove just for iteration 1.
+        		JFrame deal_complete= new deal_complete();
+				//JFrame loyalty_scheme= new loyalty_scheme();
         	}
         });
         btnConfirm.setFont(new Font("Times New Roman", Font.BOLD, 25));
@@ -118,10 +120,18 @@ public class confirm_order extends JFrame {
         chckbxNewCheckBox.setBounds(10, 9, 106, 41);
         group.add(chckbxNewCheckBox);
         panel.add(chckbxNewCheckBox);
+        chckbxNewCheckBox.setSelected(true);
         
         JCheckBox chckbxTakeAway = new JCheckBox("Take Away");
         chckbxTakeAway.setFont(new Font("Times New Roman", Font.PLAIN, 25));
         chckbxTakeAway.setBounds(120, 9, 143, 41);
+        chckbxTakeAway.addMouseListener(new MouseAdapter() {
+        	@Override
+        	public void mouseClicked(MouseEvent e) {
+        		if(e.getSource() == chckbxTakeAway)
+        			order.setDiningOption("Take Away");
+        	}
+        });
         group.add(chckbxTakeAway);
         panel.add(chckbxTakeAway);
         
@@ -141,7 +151,7 @@ public class confirm_order extends JFrame {
         panel_1.setBounds(589, 518, 157, 59);
         contentPane.add(panel_1);
         
-        JLabel lblNewLabel_1 = new JLabel("New label");
+        JLabel lblNewLabel_1 = new JLabel(String.valueOf(price));
         lblNewLabel_1.setBounds(14, 0, 125, 59);
         panel_1.add(lblNewLabel_1);
         lblNewLabel_1.setFont(new Font("Times New Roman", Font.PLAIN, 25));

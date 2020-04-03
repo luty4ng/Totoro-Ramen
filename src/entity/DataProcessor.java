@@ -12,6 +12,13 @@ public class DataProcessor {
 	//	Constructor: define which csv file you want to access
 	public DataProcessor(String fileName) {
 		csvFile = new File(fileName);
+		if(!this.csvFile.exists())
+			try {
+				csvFile.createNewFile();
+			} catch (IOException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
 		//System.out.println(csvFile.exists());
 		dict = new Hashtable();
 		try {
@@ -121,6 +128,7 @@ public class DataProcessor {
 	// Write your contents in csv file
 	public void Write(ArrayList<String> str) {
 		try {
+			
 			csvWriter = new BufferedWriter(new FileWriter(csvFile));
 			for (String l:str){
 	            csvWriter.write(l);

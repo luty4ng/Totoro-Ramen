@@ -69,9 +69,9 @@ public class deal_complete extends JFrame {
 		panel.add(finish);
 		
 		JLabel lblNewLabel = new JLabel("thanks for your patronize");
-		lblNewLabel.setFont(new Font("Edwardian Script ITC", Font.PLAIN, 36));
+		lblNewLabel.setFont(new Font("MV Boli", Font.PLAIN, 36));
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel.setBounds(243, 188, 305, 64);
+		lblNewLabel.setBounds(104, 188, 586, 64);
 		contentPane.add(lblNewLabel);
 		
 		setVisible(true);

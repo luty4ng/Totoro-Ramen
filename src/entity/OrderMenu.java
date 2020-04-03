@@ -1,94 +1,57 @@
 package entity;
 import java.io.*;
 import java.lang.*;
+import java.util.ArrayList;
 
 public class OrderMenu {
 
-	private static double noodlePrice;
-	private static double noriPrice;
-	private static double eggPrice;
-	private static double bambooPrice;
-	private static double chashuPrice;
-	private static int noriAvailable;
-	private static int eggAvailable;
-	private static int bambooAvailable;
-	private static int chashuAvailable;
+	private double noodlePrice;
+	private double noriPrice;
+	private double eggPrice;
+	private double bambooPrice;
+	private double chashuPrice;
+	private int noriAvailable;
+	private int eggAvailable;
+	private int bambooAvailable;
+	private int chashuAvailable;
 	
 	//Pass the data in the file into a variable
 	public OrderMenu() {
-		String[][] a= new String[10][10];
-		a=readCSV();
-		noriPrice=Double.parseDouble(a[1][2]);
-		eggPrice=Double.parseDouble(a[4][2]);
-		bambooPrice=Double.parseDouble(a[2][2]);
-		chashuPrice=Double.parseDouble(a[3][2]);
-		noriAvailable=Integer.parseInt(a[1][1]);
-		eggAvailable=Integer.parseInt(a[4][1]);
-		bambooAvailable=Integer.parseInt(a[2][1]);
-		chashuAvailable=Integer.parseInt(a[3][1]);
-
+		readMenu();
 	}
 	//Read CSV file
-	public String[][] readCSV(){
-		int n=0;
-		int m;
-		String[][] x=new String[10][10];
-
-		File csv = new File("/Users/apple/Desktop/material.csv");
- 
-		try{
+	public void readMenu() {
+		DataProcessor data = new DataProcessor("data/material.csv");
+		String[] meterial = data.Read().get(0).split(",");
+		this.noodlePrice = Double.parseDouble(meterial[0]);
+		this.noriPrice = Double.parseDouble(meterial[1]);
+		this.eggPrice = Double.parseDouble(meterial[2]);
+		this.bambooPrice = Double.parseDouble(meterial[3]);
+		this.chashuPrice = Double.parseDouble(meterial[4]);
+		this.noriAvailable = Integer.parseInt(meterial[5]);
+		this.eggAvailable = Integer.parseInt(meterial[6]);
+		this.bambooAvailable = Integer.parseInt(meterial[7]);
+		this.chashuAvailable = Integer.parseInt(meterial[8]);
+	}
 	
-			//Reads text from the character input stream, buffers each character, thus achieves the efficient reading.
-			BufferedReader textFile = new BufferedReader(new FileReader(csv));
-			String[] lineDta = new String[100] ;
-
-			for(m=0;m<100;m++) {
-    	lineDta[m]="";
-			}
- 
-			//Assign the next line of data in the document to lineData and determine if it is empty, or output if it is not
-			while ((lineDta[n] = textFile.readLine()) != null){
-				x[n] = lineDta[n].split(",");
-				n++;
-			}
-			textFile.close();
- 
-		}catch (FileNotFoundException e){
-			System.out.println("NOT FOUND");
-		}catch (IOException e){
-			System.out.println("ERROR");
-		}
-		return x;
+	public void writeMenu() {
+		DataProcessor data = new DataProcessor("data/material.csv");
+		ArrayList<String> outPutMenu = new ArrayList<String>(); 
+		outPutMenu.add("noodlePrice,noriPrice,"
+				     + "eggPrice,bambooPrice,chashuPrice,"
+				     + "noriAvailable,eggAvailable,bambooAvailable,"
+				     + "chashuAvailable");
+		outPutMenu.add("" + this.noodlePrice + ","
+						  + this.noriPrice + ","
+						  + this.eggPrice + ","
+						  + this.bambooPrice + ","
+						  + this.chashuPrice + ","
+						  + this.noriAvailable + ","
+						  + this.eggAvailable + ","
+						  + this.bambooAvailable + ","
+						  + this.chashuAvailable + ",");
+		data.Write(outPutMenu);
 	}
-	//A function that writes data to a CSV file
-	public void writemenu(){
-		File writeFile = new File("/Users/apple/Desktop/material.csv");
-		try{
-	        //The BufferedReader class creates a buffered character output stream using the default size output buffer
-	        BufferedWriter writeText = new BufferedWriter(new FileWriter(writeFile));
-
-	            //A method to call write writes the string to the stream
-	            writeText.write("name,amount,price");
-	            writeText.newLine(); 
-	            writeText.write("nori,1,2");
-	            writeText.newLine(); 
-	            writeText.write("bambooshoots,1,2");
-	            writeText.newLine(); 
-	            writeText.write("chashu,1,2");
-	            writeText.newLine(); 
-	            writeText.write("boiledEgg,1,2");
-
-
-
-	        writeText.flush();
-	        writeText.close();
-	    	}catch (FileNotFoundException e){
-	        System.out.println("NOT FOUND");
-	    	}catch (IOException e){
-	        System.out.println("ERROR");
-	    		}
-	}
-
 	//read noodlePrice
 	public  double getnoodlePrice(){
 		return noodlePrice;
@@ -162,6 +125,11 @@ public class OrderMenu {
 	public void setchashuAvailable(int chashuAvailable) { 
 		this.chashuAvailable = chashuAvailable;
 	}
-	
+	public static void main(String[] args) {
+		// Usage Example
+		OrderMenu om = new OrderMenu();
+		om.setbambooAvailable(5);
+		om.writeMenu();
+	}
 
 }

@@ -1,5 +1,2 @@
-name,amount,price
-Nori,100,2
-bambooshoots,100,1
-chashu,100,2.5
-boiledEgg,100,3
+noodlePrice,noriPrice,eggPrice,bambooPrice,chashuPrice,noriAvailable,eggAvailable,bambooAvailable,chashuAvailable
+9.9,1.0,1.0,1.0,2.0,5,5,5,5,

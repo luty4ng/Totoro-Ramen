@@ -14,6 +14,10 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.SwingConstants;
 import javax.swing.UIManager;
 import javax.swing.border.TitledBorder;
+
+import entity.NoodleOrder;
+import entity.Order;
+
 import javax.swing.JToggleButton;
 import javax.swing.JSlider;
 import javax.swing.JTextArea;
@@ -22,31 +26,42 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 public class add_on extends JFrame {
-	//继续持有Order并传入下一个Jframe,noodleOrder调用add方法，并且存入order类中
-	//order继续向后传
-	private JPanel contentPane;
 
+	private JPanel contentPane;
+	private NoodleOrder noodle;
+	private Order order;
+//	private Add_on_numbers numbers = new Add_on_numbers();
+	private int number1 = 0;
+	private int number2 = 0;
+	private int number3 = 0;
+	private int number4 = 0;
+	
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					add_on frame = new add_on();
-					Add_on_numbers numbers = new Add_on_numbers();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+//	public static void main(String[] args) {
+//		EventQueue.invokeLater(new Runnable() {
+//			public void run() {
+//				try {
+//					NoodleOrder noodle = null;
+//					add_on frame = new add_on(noodle);
+//					Add_on_numbers numbers = new Add_on_numbers();
+//					frame.setVisible(true);
+//				} catch (Exception e) {
+//					e.printStackTrace();
+//				}
+//			}
+//		});
+//	}
 
 	/**
 	 * Create the frame.
+	 * @param noodle 
 	 */
-	public add_on() {
+	public add_on(Order order, NoodleOrder noodle) {
+		this.noodle = noodle;
+		this.order = order;
+		
 		setTitle("Order add-ons for your ramen");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(740, 200, 800, 740);
@@ -83,7 +98,7 @@ public class add_on extends JFrame {
 		
 		JLabel lblExtraChashu = new JLabel("Extra Chashu");
 		lblExtraChashu.setFont(new Font("Times New Roman", Font.BOLD, 28));
-		lblExtraChashu.setBounds(14, 344, 152, 26);
+		lblExtraChashu.setBounds(14, 344, 198, 26);
 		panel.add(lblExtraChashu);
 		
 		JLabel lblPrice = new JLabel("Unit Price");
@@ -96,188 +111,196 @@ public class add_on extends JFrame {
 		lblNumber.setBounds(493, 30, 131, 26);
 		panel.add(lblNumber);
 		
-		JLabel lblPerShare = new JLabel("\u00A31");
+		JLabel lblPerShare = new JLabel(String.valueOf(Order.menu.getnoriPrice()));
 		lblPerShare.setFont(new Font("Times New Roman", Font.PLAIN, 26));
 		lblPerShare.setBounds(270, 74, 150, 26);
 		panel.add(lblPerShare);
 		
-		JLabel label_1 = new JLabel("\u00A31");
+		JLabel label_1 = new JLabel(String.valueOf(Order.menu.geteggPrice()));
 		label_1.setFont(new Font("Times New Roman", Font.PLAIN, 26));
 		label_1.setBounds(270, 164, 150, 26);
 		panel.add(label_1);
 		
-		JLabel label_2 = new JLabel("\u00A31");
+		JLabel label_2 = new JLabel(String.valueOf(Order.menu.getbambooPrice()));
 		label_2.setFont(new Font("Times New Roman", Font.PLAIN, 26));
 		label_2.setBounds(270, 254, 150, 26);
 		panel.add(label_2);
 		
-		JLabel label_3 = new JLabel("\u00A32");
+		JLabel label_3 = new JLabel(String.valueOf(Order.menu.getchashuPrice()));
 		label_3.setFont(new Font("Times New Roman", Font.PLAIN, 26));
 		label_3.setBounds(270, 344, 150, 26);
 		panel.add(label_3);
 		
-		final Add_on_numbers numbers = new Add_on_numbers(); // variable numbers record the changes of numbers of add_on
+//		Add_on_numbers numbers = new Add_on_numbers(); // variable numbers record the changes of numbers of add_on
 		
-		final JTextArea textArea1 = new JTextArea();     // Extra Nori
+		JTextArea textArea1 = new JTextArea();     // Extra Nori
 		textArea1.setFont(new Font("Times New Roman", Font.PLAIN, 26));
-		textArea1.setText(Integer.toString(numbers.number1));
+		textArea1.setText(Integer.toString(number1));
 		textArea1.setBounds(493, 74, 40, 35);
 		panel.add(textArea1);
 		
-		final JButton button1 = new JButton("-"); 
+		JButton button1 = new JButton("-"); 
 		button1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(e.getSource() == button1) {
-					if (numbers.number1 > 0) {
-						numbers.number1 = numbers.number1 - 1;
+					if (number1 > 0) {
+						number1 = number1 - 1;
 					}
-					textArea1.setText(Integer.toString(numbers.number1));
+					textArea1.setText(Integer.toString(number1));
 				}
 			}
 		});
 		button1.setFont(new Font("Times New Roman", Font.BOLD, 28));
-		button1.setBounds(546, 74, 45, 35);
+		button1.setBounds(547, 74, 49, 35);
 		panel.add(button1);
 		
-		final JButton button2 = new JButton("+");
+		JButton button2 = new JButton("+");
 		button2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(e.getSource() == button2) {
-					numbers.number1 = numbers.number1 + 1;
-					textArea1.setText(Integer.toString(numbers.number1));
+					number1 = number1 + 1;
+					textArea1.setText(Integer.toString(number1));
 				}
 			}
 		});
 		button2.setFont(new Font("Times New Roman", Font.BOLD, 23));
-		button2.setBounds(596, 74, 45, 35);
+		button2.setBounds(596, 74, 49, 35);
 		panel.add(button2);
 		
-		final JTextArea textArea2 = new JTextArea();     // Extra boiled egg
+		JTextArea textArea2 = new JTextArea();     // Extra boiled egg
 		textArea2.setFont(new Font("Times New Roman", Font.PLAIN, 26));
-		textArea2.setText(Integer.toString(numbers.number2));
+		textArea2.setText(Integer.toString(number2));
 		textArea2.setBounds(493, 164, 40, 35);
 		panel.add(textArea2);
 		
-		final JButton button3 = new JButton("-"); 
+		JButton button3 = new JButton("-"); 
 		button3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(e.getSource() == button3) {
-					if (numbers.number2 > 0) {
-						numbers.number2 = numbers.number2 - 1;
+					if (number2 > 0) {
+						number2 = number2 - 1;
 					}
-					textArea2.setText(Integer.toString(numbers.number2));
+					textArea2.setText(Integer.toString(number2));
 				}
 			}
 		});
 		button3.setFont(new Font("Times New Roman", Font.BOLD, 28));
-		button3.setBounds(546, 164, 45, 35);
+		button3.setBounds(547, 164, 49, 35);
 		panel.add(button3);
 		
-		final JButton button4 = new JButton("+");
+		JButton button4 = new JButton("+");
 		button4.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(e.getSource() == button4) {
-					numbers.number2 = numbers.number2 + 1;
-					textArea2.setText(Integer.toString(numbers.number2));
+					number2 = number2 + 1;
+					textArea2.setText(Integer.toString(number2));
 				}
 			}
 		});
 		button4.setFont(new Font("Times New Roman", Font.BOLD, 23));
-		button4.setBounds(596, 164, 45, 35);
+		button4.setBounds(596, 164, 49, 35);
 		panel.add(button4);
 		
-		final JTextArea textArea3 = new JTextArea();     // Bamboo shoots
+		JTextArea textArea3 = new JTextArea();     // Bamboo shoots
 		textArea3.setFont(new Font("Times New Roman", Font.PLAIN, 26));
-		textArea3.setText(Integer.toString(numbers.number3));
+		textArea3.setText(Integer.toString(number3));
 		textArea3.setBounds(493, 254, 40, 35);
 		panel.add(textArea3);
 		
-		final JButton button5 = new JButton("-"); 
+		JButton button5 = new JButton("-"); 
 		button5.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(e.getSource() == button5) {
-					if (numbers.number3 > 0) {
-						numbers.number3 = numbers.number3 - 1;
+					if (number3 > 0) {
+						number3 = number3 - 1;
 					}
-					textArea3.setText(Integer.toString(numbers.number3));
+					textArea3.setText(Integer.toString(number3));
 				}
 			}
 		});
 		button5.setFont(new Font("Times New Roman", Font.BOLD, 28));
-		button5.setBounds(546, 254, 45, 35);
+		button5.setBounds(547, 254, 49, 35);
 		panel.add(button5);
 		
-		final JButton button6 = new JButton("+");
+		JButton button6 = new JButton("+");
 		button6.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(e.getSource() == button6) {
-					numbers.number3 = numbers.number3 + 1;
-					textArea3.setText(Integer.toString(numbers.number3));
+					number3 = number3 + 1;
+					textArea3.setText(Integer.toString(number3));
 				}
 			}
 		});
 		button6.setFont(new Font("Times New Roman", Font.BOLD, 23));
-		button6.setBounds(596, 254, 45, 35);
+		button6.setBounds(596, 254, 49, 35);
 		panel.add(button6);
 		
-		final JTextArea textArea4 = new JTextArea();     // Extra Chashu
+		JTextArea textArea4 = new JTextArea();     // Extra Chashu
 		textArea4.setFont(new Font("Times New Roman", Font.PLAIN, 26));
-		textArea4.setText(Integer.toString(numbers.number4));
+		textArea4.setText(Integer.toString(number4));
 		textArea4.setBounds(493, 344, 40, 35);
 		panel.add(textArea4);
 		
-		final JButton button7 = new JButton("-"); 
+		JButton button7 = new JButton("-"); 
 		button7.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(e.getSource() == button7) {
-					if (numbers.number4 > 0) {
-						numbers.number4 = numbers.number4 - 1;
+					if (number4 > 0) {
+						number4 = number4 - 1;
 					}
-					textArea4.setText(Integer.toString(numbers.number4));
+					textArea4.setText(Integer.toString(number4));
 				}
 			}
 		});
 		button7.setFont(new Font("Times New Roman", Font.BOLD, 28));
-		button7.setBounds(546, 344, 45, 35);
+		button7.setBounds(547, 344, 49, 35);
 		panel.add(button7);
 		
-		final JButton button8 = new JButton("+");
+		JButton button8 = new JButton("+");
 		button8.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(e.getSource() == button8) {
-					numbers.number4 = numbers.number4 + 1;
-					textArea4.setText(Integer.toString(numbers.number4));
+					number4 = number4 + 1;
+					textArea4.setText(Integer.toString(number4));
 				}
 			}
 		});
 		button8.setFont(new Font("Times New Roman", Font.BOLD, 23));
-		button8.setBounds(596, 344, 45, 35);
+		button8.setBounds(596, 344, 49, 35);
 		panel.add(button8);
 		
-		final JButton btnNext = new JButton("Have Completed. NEXT");
+		
+		
+		JButton btnNext = new JButton("Have Completed. NEXT");
 		btnNext.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(e.getSource() == btnNext) {
 					setVisible(false);
-					JFrame confirm_order= new confirm_order();
+					noodle.add(number1,number2, number3, number4);
+					System.out.print(number1);
+					System.out.print(number2);
+					System.out.print(number3);
+					System.out.print(number4);
+					order.addNoodleOrder(noodle);
+					JFrame confirm_order= new confirm_order(order);
 				}
 			}
 		});
 		btnNext.setFont(new Font("Times New Roman", Font.BOLD, 26));
-		btnNext.setBounds(401, 615, 305, 52);
+		btnNext.setBounds(401, 615, 310, 52);
 		contentPane.add(btnNext);
 		
-		final JButton btnBack = new JButton("Back");
+		JButton btnBack = new JButton("Back");
 		btnBack.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(e.getSource() == btnBack) {
 					setVisible(false);
-					JFrame order_ramen= new order_ramen();
+					JFrame order_ramen= new order_ramen(order);
 				}
 			}
 		});
 		btnBack.setFont(new Font("Times New Roman", Font.BOLD, 26));
-		btnBack.setBounds(65, 615, 305, 52);
+		btnBack.setBounds(65, 615, 310, 52);
 		contentPane.add(btnBack);
 		
 		setVisible(true);

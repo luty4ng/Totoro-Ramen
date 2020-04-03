@@ -6,6 +6,10 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import entity.Order;
+import entity.OrderMenu;
+
 import javax.swing.JLabel;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
@@ -28,6 +32,7 @@ public class modify_menu extends JFrame {
 	private JTextField textField_2;
 	private JTextField textField_3;
 	private JTextField textField_4;
+	private OrderMenu ordermenu;
 
 	/**
 	 * Launch the application.
@@ -49,8 +54,12 @@ public class modify_menu extends JFrame {
 	 * Create the frame.
 	 */
 	public modify_menu() {
-		
-		int ramenprice = 0, noriprice = 0, eggprice = 0, bambooprice = 0, chashuprice = 0;
+		this.ordermenu = new OrderMenu();
+		double ramenprice = ordermenu.getnoodlePrice(), noriprice = ordermenu.getnoriPrice(),
+			   eggprice = ordermenu.geteggPrice(), bambooprice = ordermenu.getbambooPrice(), 
+			   chashuprice = ordermenu.getchashuPrice();
+		int noriAvalable = ordermenu.getnoriAvailable(), eggAvalable = ordermenu.geteggAvailable(),
+			bambooAvalable = ordermenu.getbambooAvailable(), chashuAvalable = ordermenu.getchashuAvailable();
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(740, 200, 800, 740);
@@ -148,27 +157,27 @@ public class modify_menu extends JFrame {
 		lblInt_4.setBounds(300, 500, 101, 40);
 		contentPane.add(lblInt_4);
 		
-		textField = new JTextField();
+		textField = new JTextField(""+ramenprice);
 		textField.setBounds(399, 200, 101, 40);
 		contentPane.add(textField);
 		textField.setColumns(10);
 		
-		textField_1 = new JTextField();
+		textField_1 = new JTextField(""+noriprice);
 		textField_1.setColumns(10);
 		textField_1.setBounds(399, 275, 101, 40);
 		contentPane.add(textField_1);
 		
-		textField_2 = new JTextField();
+		textField_2 = new JTextField(""+eggprice);
 		textField_2.setColumns(10);
 		textField_2.setBounds(399, 350, 101, 40);
 		contentPane.add(textField_2);
 		
-		textField_3 = new JTextField();
+		textField_3 = new JTextField(""+bambooprice);
 		textField_3.setColumns(10);
 		textField_3.setBounds(399, 425, 101, 40);
 		contentPane.add(textField_3);
 		
-		textField_4 = new JTextField();
+		textField_4 = new JTextField(""+chashuprice);
 		textField_4.setColumns(10);
 		textField_4.setBounds(399, 500, 101, 40);
 		contentPane.add(textField_4);
@@ -213,6 +222,12 @@ public class modify_menu extends JFrame {
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(e.getSource() == btnNewButton_1) {
+					ordermenu.setnoodlePrice(Double.parseDouble(textField.getText()));
+					ordermenu.setnoriPrice(Double.parseDouble(textField_1.getText()));
+					ordermenu.seteggPrice(Double.parseDouble(textField_2.getText()));
+					ordermenu.setbambooPrice(Double.parseDouble(textField_3.getText()));
+					ordermenu.setchashuPrice(Double.parseDouble(textField_4.getText()));
+					ordermenu.writeMenu();
 					setVisible(false);
 					JFrame Backstagetest = new Backstagetest();
 				}
