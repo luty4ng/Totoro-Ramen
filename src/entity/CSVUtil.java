@@ -1,5 +1,5 @@
+//package cn.com.csv;
 package entity;
-
 
 	import java.io.BufferedReader;
     import java.io.FileReader;
@@ -7,7 +7,7 @@ package entity;
 	public class CSVUtil {
 	    public  String read(int row, int col){
 	          try {           
-	           BufferedReader reade = new BufferedReader(new FileReader("data\\material.csv"));           
+	           BufferedReader reade = new BufferedReader(new FileReader("..\\..\\data\\material.csv"));           
 	           String line = null;
 	           int index=0;
 	           while((line=reade.readLine())!=null){

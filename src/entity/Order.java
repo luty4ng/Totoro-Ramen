@@ -10,13 +10,13 @@ public class Order {
 	private Date orderTime;
 	private String diningOption;
 	private double totalPrice;
-	//Link reference to VIP member;
+	//Link reference to VIP member
 	private Member member;
 	public static OrderMenu menu;
 	private ArrayList<NoodleOrder> noodleOrder;
 	
 	public Order(Date orderTime) {
-		DataProcessor processor = new DataProcessor("../../data/configure.csv");
+		DataProcessor processor = new DataProcessor("data/configure.csv");
 		ArrayList<String> test = processor.Read();
 		System.out.println(test.size());
 		String currentOID = test.get(0);
@@ -25,7 +25,7 @@ public class Order {
 			this.oID += "0";
 		this.oID += currentOID;
 		
-		Order.menu = new OrderMenu();
+		//Order.menu = new OrderMenu();
 		this.orderTime = orderTime;
 		this.diningOption = null;
 		this.totalPrice = 0.0;
@@ -59,6 +59,10 @@ public class Order {
 		return member;
 	}
 
+	public String getoID() {
+		return oID;
+	}
+	
 	public boolean setMember(String memberNumber) {
 		//this.member = new Member(memberNumber);
 		if(this.member == null)
@@ -67,12 +71,19 @@ public class Order {
 			return true;
 	}
 	
+	public void addNoodleOrder(NoodleOrder nOrder) {
+		this.noodleOrder.add(nOrder);
+	}
+	
+	public String[][] getOrderDetail(){
+		return null;
+		
+	}
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		File csvFile = new File("../../data/configure.csv");
-		csvFile.exists();
-		Date date=new Date();
-		date.UTC(1999, 4, 30, 1, 2, 3);
+		Date date=new Date(1999, 4, 30, 1, 2, 3);
 		Order order = new Order(date);
 	}
+
+	
 }
