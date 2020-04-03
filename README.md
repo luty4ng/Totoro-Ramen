@@ -19,12 +19,24 @@ C:.
 
 ### Change Log
 
+**2020-04-01**
+
+> Update data processor
+>
+> Update entity framework
+
+**2020-04-02**
+
+> Update ramen_UI
+>
+> Fix bugs
+
 **2020-04-03**
 
 > Fix bugs
->
-> clean unnecessary branch on remote/origin
->
+> 
+> Clean unnecessary branch on remote/origin
+> 
 > add a Special Notice about usage of github 
 
 
