@@ -12,15 +12,20 @@ public class DataProcessor {
 	//	Constructor: define which csv file you want to access
 	public DataProcessor(String fileName) {
 		csvFile = new File(fileName);
-		System.out.println(csvFile.exists());
+		//System.out.println(csvFile.exists());
 		dict = new Hashtable();
 		try {
 			csvReader = new BufferedReader(new FileReader(csvFile));
-			String[] fields = csvReader.readLine().split(",");
-			for(int i=0;i<fields.length;i++)
-			{
-				dict.put(i, fields[i]);
+			try {
+				String[] fields = csvReader.readLine().split(",");
+				for(int i=0;i<fields.length;i++)
+				{
+					dict.put(i, fields[i]);
+				}
+			} catch(Exception e) {
+				System.out.println("Empty file detected.");
 			}
+			
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
