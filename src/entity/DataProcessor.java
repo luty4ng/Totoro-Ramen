@@ -114,9 +114,14 @@ public class DataProcessor {
 
 
 	// Write your contents in csv file
-	public void Write() {
+	public void Write(ArrayList<String> str) {
 		try {
 			csvWriter = new BufferedWriter(new FileWriter(csvFile));
+			for (String l:str){
+	            csvWriter.write(l);
+	            csvWriter.newLine();
+	            csvWriter.flush();
+	        }
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -148,6 +153,12 @@ public class DataProcessor {
 		ArrayList<String> result = csv.Read("Age=20");
 		for(String i:result)
 			System.out.println(i);
+		
+		ArrayList<String> str = new ArrayList<String>();
+		str.add("a,b,c");
+		str.add("1,2,3");
+		DataProcessor csvw = new DataProcessor("data/test2.csv");
+		csvw.Write(str);
 
 		
 	}
