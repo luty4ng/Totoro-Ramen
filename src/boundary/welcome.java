@@ -72,7 +72,7 @@ public class welcome extends JFrame {
 			}
 		});
 		panel.setLayout(null);
-		btnNewButton.setBounds(26, 44, 200, 123);
+		btnNewButton.setBounds(14, 44, 212, 123);
 		panel.add(btnNewButton);
 		
 		JButton btnCustomer = new JButton("Customer");
@@ -88,7 +88,7 @@ public class welcome extends JFrame {
 			}
 		});
 		btnCustomer.setFont(new Font("Times New Roman", Font.PLAIN, 30));
-		btnCustomer.setBounds(259, 44, 200, 123);
+		btnCustomer.setBounds(259, 44, 208, 123);
 		panel.add(btnCustomer);
 		
 		JLabel lblWhatIsYourIdentity = new JLabel("Choose Your Identity Please");

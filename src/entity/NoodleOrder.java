@@ -66,8 +66,8 @@ public class NoodleOrder {
     //Add-ones
     //should modify the number of the moterial,haven't done
     public String add(int _extraNori,
-                      int _bambooShoots,
                       int _extraBoiledEgg,
+                      int _bambooShoots,
                       int _extraChashu ){
         this.extraNori = _extraNori;
         this.extraBoiledEgg = _extraBoiledEgg;

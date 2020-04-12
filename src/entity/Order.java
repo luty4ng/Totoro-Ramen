@@ -55,8 +55,10 @@ public class Order {
 	}
 
 	public double getTotalPrice() {
+		double price = 0;
 		for(int i=0;i<noodleOrder.size();i++)
-			this.totalPrice += noodleOrder.get(i).getPrice();
+			price += noodleOrder.get(i).getPrice();
+		this.totalPrice = price;
 		return this.totalPrice;
 	}
 
@@ -117,6 +119,7 @@ public class Order {
 		outputOrder.add("");
 		outputOrder.add("**************************************************");
 		processor.Write(outputOrder);
+		DataProcessor processorForOID = new DataProcessor("data/configure.csv");
 		return true;
 	}
 	

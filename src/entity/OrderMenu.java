@@ -33,7 +33,7 @@ public class OrderMenu {
 		this.bambooAvailable = Integer.parseInt(meterial[7]);
 		this.chashuAvailable = Integer.parseInt(meterial[8]);
 	}
-	
+	//write CSV file
 	public void writeMenu() {
 		DataProcessor data = new DataProcessor("data/material.csv");
 		ArrayList<String> outPutMenu = new ArrayList<String>(); 

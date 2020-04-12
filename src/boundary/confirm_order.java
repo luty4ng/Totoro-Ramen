@@ -81,7 +81,7 @@ public class confirm_order extends JFrame {
         jTable.setRowHeight(25);
         scrollPane.setViewportView(jTable);
         
-        JButton btnNewButton = new JButton("Add another bowl of noddles");
+        JButton btnNewButton = new JButton("Add another bowl of noodles");
         btnNewButton.addMouseListener(new MouseAdapter() {
         	@Override
         	public void mouseClicked(MouseEvent arg0) {
@@ -137,7 +137,7 @@ public class confirm_order extends JFrame {
         
         JLabel lblNewLabel = new JLabel("Dining options:");
         lblNewLabel.setFont(new Font("Times New Roman", Font.PLAIN, 22));
-        lblNewLabel.setBounds(36, 530, 135, 33);
+        lblNewLabel.setBounds(36, 530, 150, 33);
         contentPane.add(lblNewLabel);
         
         JLabel lblTotalPrice = new JLabel("Total Price:");

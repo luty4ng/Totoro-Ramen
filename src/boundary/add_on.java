@@ -72,7 +72,7 @@ public class add_on extends JFrame {
 		
 		JLabel lblYouCanChoose = new JLabel("You can order add-ons with extra payments.");
 		lblYouCanChoose.setFont(new Font("Times New Roman", Font.PLAIN, 35));
-		lblYouCanChoose.setBounds(48, 84, 625, 35);
+		lblYouCanChoose.setBounds(48, 84, 700, 35);
 		contentPane.add(lblYouCanChoose);
 		
 		JPanel panel = new JPanel();

@@ -78,7 +78,7 @@ public class order_ramen extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 	
-		JLabel lblThePriceOf = new JLabel("The price of a ramen is fixed at \u00A39.99");
+		JLabel lblThePriceOf = new JLabel("The price of a ramen is " + order.menu.getnoodlePrice() + "£");
 		lblThePriceOf.setFont(new Font("Times New Roman", Font.PLAIN, 35));
 		lblThePriceOf.setBounds(26, 32, 547, 35);
 		contentPane.add(lblThePriceOf);
