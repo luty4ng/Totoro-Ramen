@@ -8,6 +8,7 @@ public class DataProcessor {
 	BufferedReader csvReader;
 	BufferedWriter csvWriter;
 	Dictionary dict;
+	private String firstLine;
 	
 	//	Constructor: define which csv file you want to access
 	public DataProcessor(String fileName) {
@@ -24,7 +25,9 @@ public class DataProcessor {
 		try {
 			csvReader = new BufferedReader(new FileReader(csvFile));
 			try {
-				String[] fields = csvReader.readLine().split(",");
+				firstLine = csvReader.readLine();
+				String[] fields = firstLine.split(",");
+				
 				for(int i=0;i<fields.length;i++)
 				{
 					dict.put(i, fields[i]);
@@ -130,6 +133,9 @@ public class DataProcessor {
 		try {
 			
 			csvWriter = new BufferedWriter(new FileWriter(csvFile));
+			csvWriter.write(firstLine);
+			csvWriter.newLine();
+			csvWriter.flush();
 			for (String l:str){
 	            csvWriter.write(l);
 	            csvWriter.newLine();
@@ -147,6 +153,8 @@ public class DataProcessor {
             System.out.println("keys : " + i.nextElement());
 		for (Enumeration i = dict.elements(); i.hasMoreElements();)
             System.out.println("Values : " + i.nextElement());
+		
+		//System.out.println(dict.get("Email"));
 
 	}
 	
@@ -162,6 +170,7 @@ public class DataProcessor {
 	public static void main(String[] args) {
 		// Usage Example
 		DataProcessor csv = new DataProcessor("data/test.csv");
+		csv.CheckDict();
 		//ArrayList<String> result = csv.Read();
 		ArrayList<String> result = csv.Read("Age=20");
 		for(String i:result)
