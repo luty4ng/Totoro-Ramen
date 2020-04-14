@@ -39,7 +39,11 @@ C:.
 > 
 > add a Special Notice about usage of github 
 
+**2020-04-14**
 
+>Update Member Class
+>
+>Update Member API doc
 
 ### Special Notice
 
@@ -59,5 +63,6 @@ C:.
 .settings/
 .classpath
 .project
+bin/
 ```
 
