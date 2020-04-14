@@ -133,3 +133,4 @@ member.deleteMember("111111");
 
 ![NtuiT.png](https://cdn.img.wenhairu.com/images/2020/04/14/NtuiT.png)
 
+如果图显示不出来可以直接看``data/member.csv``
