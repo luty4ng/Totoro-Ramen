@@ -3,6 +3,7 @@ package entity;
 import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.Random;
 
@@ -21,14 +22,18 @@ public class Order {
 		noodleOrder = new ArrayList<NoodleOrder>();
 		String[] currentOID = processor.Read().get(0).split(",");
 		int inputID = Integer.parseInt(currentOID[0]);
-		this.oID = "1"; //the day of the week.
+		
+		Calendar cal = Calendar.getInstance(); 
+		cal.setTime(orderTime);
+		int weekday = cal.get(cal.DAY_OF_WEEK);
+		
+		this.oID = "" + weekday; //the day of the week.
 		for(int i=0;i<(5-currentOID[0].length());i++)
 			this.oID += "0";
 		this.oID += currentOID[0];
 		
 		ArrayList<String> outputConfig = new ArrayList<String>();
-		outputConfig.add("OIDconfigure");
-		outputConfig.add("" + (++inputID));
+		outputConfig.add("" + (++inputID)+','+currentOID[1]);
 		processor.Write(outputConfig);
 
 		
@@ -123,12 +128,26 @@ public class Order {
 		return true;
 	}
 	
+	
+	public void outPutOrder() {
+		DataProcessor processor = new DataProcessor("data/order.csv");
+		Calendar cal = Calendar.getInstance(); 
+		cal.setTime(orderTime);
+		int weekday = cal.get(cal.DAY_OF_WEEK);
+		ArrayList<String> outputOrder = new ArrayList<String>();
+		outputOrder.add(String.join(",", new String[]{oID,String.valueOf(cal.get(cal.DAY_OF_WEEK)), diningOption, String.valueOf(totalPrice),String.valueOf(noodleOrder.size())}));
+		for(NoodleOrder i:noodleOrder) 
+			outputOrder.add(i.toString());
+		processor.Write(outputOrder);
+	}
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		Date date = new Date();
-		Order order = new Order(date);
-		order.printOrder();
+		Calendar cal = Calendar.getInstance(); 
+		cal.setTime(date);
+		int weekday = cal.get(cal.DAY_OF_WEEK);
+		System.out.println(weekday);
 	}
 
-	
+
 }

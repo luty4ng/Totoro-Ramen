@@ -101,6 +101,7 @@ public class confirm_order extends JFrame {
         		order.printOrder();//will be remove just for iteration 1.
         		JFrame deal_complete= new deal_complete();
 				//JFrame loyalty_scheme= new loyalty_scheme();
+        		order.outPutOrder();
         	}
         });
         btnConfirm.setFont(new Font("Times New Roman", Font.BOLD, 25));

@@ -1,0 +1,13 @@
+ 
+**************************************************
+
+              Totoro Ramen restaurant
+
+            OrderID: 400026
+            Order time: 2020-04-15 :05:36:51
+            Dining option: Eat In
+            Total price: 37.0 pounds
+
+                 Have a good meal!
+
+**************************************************

@@ -99,4 +99,20 @@ public class NoodleOrder {
     	return this.price;
     }
     
+	public String toString() {
+		return String.join(",", new String[]{nID,
+											soup,
+											noodles,
+											springOnion, 
+											nori, 
+											chashu,
+											boiledEgg,
+											String.valueOf(this.spiciness),
+											String.valueOf(this.extraNori),
+											String.valueOf(this.extraBoiledEgg),
+											String.valueOf(this.bambooShoots),
+											String.valueOf(this.extraChashu),
+											String.valueOf(this.price)});
+	}
+    
 }

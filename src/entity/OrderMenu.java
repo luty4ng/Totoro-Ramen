@@ -125,6 +125,8 @@ public class OrderMenu {
 	public void setchashuAvailable(int chashuAvailable) { 
 		this.chashuAvailable = chashuAvailable;
 	}
+	
+
 	public static void main(String[] args) {
 		// Usage Example
 		OrderMenu om = new OrderMenu();
