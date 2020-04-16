@@ -150,6 +150,18 @@ public class DataProcessor {
 		}
 	}
 	
+	public void WriteLine(String str) {
+		try {
+			
+			csvWriter = new BufferedWriter(new FileWriter(csvFile, true));
+            csvWriter.write(str);
+            csvWriter.newLine();
+            csvWriter.flush();
+	        
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
 	// Check the mapping between index and attributes of csv first line
 	private void CheckDict()
 	{
