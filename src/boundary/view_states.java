@@ -53,11 +53,27 @@ public class view_states extends JFrame {
 		btnNewButton.setBounds(200, 200, 400, 100);
 		btnNewButton.setFont(new Font("Times New Roman", Font.PLAIN, 40));
 		contentPane.add(btnNewButton);
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if(e.getSource() == btnNewButton) {
+					setVisible(false);
+					JFrame view = new view();
+				}
+			}
+		});
 		
 		JButton btnViewStates = new JButton("spicious survey");
 		btnViewStates.setBounds(200, 350, 400, 100);
 		btnViewStates.setFont(new Font("Times New Roman", Font.PLAIN, 40));
 		contentPane.add(btnViewStates);
+		btnViewStates.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if(e.getSource() == btnViewStates) {
+					spiciness_view pie = new spiciness_view();
+					pie.piechart();
+				}
+			}
+		});
 		
 		final JButton btnBack = new JButton("back");
 		btnBack.setFont(new Font("Times New Roman", Font.PLAIN, 30));

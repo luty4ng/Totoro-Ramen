@@ -37,10 +37,6 @@ public class OrderMenu {
 	public void writeMenu() {
 		DataProcessor data = new DataProcessor("data/material.csv");
 		ArrayList<String> outPutMenu = new ArrayList<String>(); 
-		outPutMenu.add("noodlePrice,noriPrice,"
-				     + "eggPrice,bambooPrice,chashuPrice,"
-				     + "noriAvailable,eggAvailable,bambooAvailable,"
-				     + "chashuAvailable");
 		outPutMenu.add("" + this.noodlePrice + ","
 						  + this.noriPrice + ","
 						  + this.eggPrice + ","
