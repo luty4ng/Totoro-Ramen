@@ -32,17 +32,20 @@ public class Order {
 			this.oID += "0";
 		this.oID += currentOID[0];
 		
-		ArrayList<String> outputConfig = new ArrayList<String>();
-		outputConfig.add("" + (++inputID)+','+currentOID[1]);
-		processor.Write(outputConfig);
-
-		
 		Order.menu = new OrderMenu();
 		this.orderTime = orderTime;
 		this.diningOption = null;
 		this.totalPrice = 0.0;
 	}
 
+	public void orderFinish() {
+		DataProcessor processor = new DataProcessor("data/configure.csv");
+		String[] currentOID = processor.Read().get(0).split(",");
+		int inputID = Integer.parseInt(currentOID[0]);
+		ArrayList<String> outputConfig = new ArrayList<String>();
+		outputConfig.add("" + (++inputID)+','+currentOID[1]);
+		processor.Write(outputConfig);
+	}
 	public Date getOrderTime() {
 		return orderTime;
 	}
@@ -138,7 +141,24 @@ public class Order {
 		outputOrder.add(String.join(",", new String[]{oID,String.valueOf(cal.get(cal.DAY_OF_WEEK)), diningOption, String.valueOf(totalPrice),String.valueOf(noodleOrder.size())}));
 		for(NoodleOrder i:noodleOrder) 
 			outputOrder.add(i.toString());
-		processor.Write(outputOrder);
+		for(String i:outputOrder)
+			processor.WriteLine(i);
+	}
+	
+	public void discount() {
+		
+		double max = 0;
+		int index = 0;
+		for(int i=0;i<noodleOrder.size();i++) {
+			if(max <= noodleOrder.get(i).getPrice()) {
+				max = noodleOrder.get(i).getPrice();
+				index = i;
+			}
+		}
+		
+		noodleOrder.get(index).setPrice(0);
+		totalPrice -= max;
+		
 	}
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub

@@ -38,29 +38,26 @@ public class saleroom_view {
 		int saturday = 0;
 		int sunday = 0;
 		for(int j=0; j<number1.size(); j++) {
-				String temp = number1.get(j);
-				String[] str = temp.split(",");
-				System.out.println(temp + " " + str[2]);
-				if(str.length == 5){
-					System.out.println(str[1]);
-					if(str[1].equals("1")) {
-						monday = monday + Integer.parseInt(str[3]);
-					}else if(str[1].equals("2")) {
-						tuesday = tuesday + Integer.parseInt(str[3]);
-					}else if(str[1].equals("3")) {
-						wednesday = wednesday + Integer.parseInt(str[3]);
-					}else if(str[1].equals("4")) {
-						thursday = thursday + Integer.parseInt(str[3]);
-					}else if(str[1].equals("5")) {
-						friday = friday + Integer.parseInt(str[3]);
-					}else if(str[1].equals("6")) {
-						saturday = saturday + Integer.parseInt(str[3]);
-					}else {
-						sunday = sunday + Integer.parseInt(str[3]);
-					}
-				}
-				System.out.println(j);
+			String temp = number1.get(j);
+			String[] str = temp.split(",");
+			if(str[1].equals("1")) {
+				monday = monday + Integer.parseInt(str[3]);
+			}else if(str[1].equals("2")) {
+				tuesday = tuesday + Integer.parseInt(str[3]);
+			}else if(str[1].equals("3")) {
+				wednesday = wednesday + Integer.parseInt(str[3]);
+				}else if(str[1].equals("4")) {
+				thursday = thursday + Integer.parseInt(str[3]);
+			}else if(str[1].equals("5")) {
+				friday = friday + Integer.parseInt(str[3]);
+			}else if(str[1].equals("6")) {
+				saturday = saturday + Integer.parseInt(str[3]);
+			}else {
+				sunday = sunday + Integer.parseInt(str[3]);
+			}
 		}
+
+
 		//create dataset
 		DefaultCategoryDataset dataset = new DefaultCategoryDataset();
 

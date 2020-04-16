@@ -33,26 +33,19 @@ public class spiciness_view{
 				for(int j=0; j<number1.size(); j++) {
 						String temp = number1.get(j);
 						String[] str = temp.split(",");
-						System.out.println(temp + " " + str[2]);
-						if(str.length == 5){
-							System.out.println("..................");
-						}else{
-							System.out.println(str[2]);
-							if(str[7].equals("0")) {
-								sp0++;
-							}else if(str[7].equals("1")){
-								sp1++;
-							}else if(str[7].equals("2")) {
-								sp2++;
-							}else if(str[7].equals("3")) {
-								sp3++;
-							}else if(str[7].equals("4")) {
-								sp4++;
-							}else {
-								sp5++;
-							}
+						if(str[7].equals("0")) {
+							sp0++;
+						}else if(str[7].equals("1")){
+							sp1++;
+						}else if(str[7].equals("2")) {
+							sp2++;
+						}else if(str[7].equals("3")) {
+							sp3++;
+						}else if(str[7].equals("4")) {
+							sp4++;
+						}else {
+							sp5++;
 						}
-						System.out.println(j);
 				}
 		 
 				DefaultPieDataset dataset = new DefaultPieDataset();

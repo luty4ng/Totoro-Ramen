@@ -70,7 +70,6 @@ public class confirm_order extends JFrame {
 
 		String[][] orderDetail = order.getOrderDetail();
 		double price = order.getTotalPrice();
-		System.out.print(orderDetail);
 	    String [] columnName = {
 	            "Items",
                 "Number",
@@ -102,6 +101,7 @@ public class confirm_order extends JFrame {
         		JFrame deal_complete= new deal_complete();
 				//JFrame loyalty_scheme= new loyalty_scheme();
         		order.outPutOrder();
+        		order.orderFinish();
         	}
         });
         btnConfirm.setFont(new Font("Times New Roman", Font.BOLD, 25));

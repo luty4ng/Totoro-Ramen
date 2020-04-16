@@ -35,19 +35,13 @@ public class addon_view {
 		int bambooShoots = 0;
 		int extraChashu = 0;
 		for(int j=0; j<number1.size(); j++) {
-				String temp = number1.get(j);
-				String[] str = temp.split(",");
-				System.out.println(temp + " " + str[2]);
-				if(str.length == 5){
-					System.out.println("..................");
-				}else{
-					System.out.println(str[2]);
-					extraNori = extraNori + Integer.parseInt(str[8]);
-					extraBoiledEgg = extraBoiledEgg + Integer.parseInt(str[9]);
-					bambooShoots = bambooShoots + Integer.parseInt(str[10]);
-					extraChashu = extraChashu + Integer.parseInt(str[11]);
-				}
-				System.out.println(j);
+			String temp = number1.get(j);
+			String[] str = temp.split(",");
+
+			extraNori = extraNori + Integer.parseInt(str[8]);
+			extraBoiledEgg = extraBoiledEgg + Integer.parseInt(str[9]);
+			bambooShoots = bambooShoots + Integer.parseInt(str[10]);
+			extraChashu = extraChashu + Integer.parseInt(str[11]);
 		}
 		//create dataset
 		DefaultCategoryDataset dataset = new DefaultCategoryDataset();

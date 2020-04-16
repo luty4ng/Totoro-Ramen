@@ -55,7 +55,11 @@ public class NoodleOrder {
      */
     public String[][] subOrderDetail() {
     	String[][] subOrderDetail = new String[5][3];
-    	subOrderDetail[0][0] = this.soup + " noodle"; subOrderDetail[0][1] = "1"; subOrderDetail[0][2] = String.valueOf(Order.menu.getnoodlePrice());
+    	subOrderDetail[0][0] = this.soup + " noodle"; subOrderDetail[0][1] = "1"; 
+    	if(this.price==0)
+    		subOrderDetail[0][2] = String.valueOf(Order.menu.getnoodlePrice()) + "----Discount";
+    	else
+    		subOrderDetail[0][2] = String.valueOf(Order.menu.getnoodlePrice());
     	subOrderDetail[1][0] = "！！extra Nori"; subOrderDetail[1][1] = String.valueOf(this.extraNori); subOrderDetail[1][2] = String.valueOf(Order.menu.getnoriPrice()*this.extraNori);
     	subOrderDetail[2][0] = "！！extra boiled egg"; subOrderDetail[2][1] = String.valueOf(this.extraBoiledEgg); subOrderDetail[2][2] = String.valueOf(Order.menu.geteggPrice()*this.extraBoiledEgg);
     	subOrderDetail[3][0] = "！！extra bambooShoots"; subOrderDetail[3][1] = String.valueOf(this.bambooShoots); subOrderDetail[3][2] = String.valueOf(Order.menu.getbambooPrice()*this.bambooShoots);
@@ -113,6 +117,9 @@ public class NoodleOrder {
 											String.valueOf(this.bambooShoots),
 											String.valueOf(this.extraChashu),
 											String.valueOf(this.price)});
+	}
+	public void setPrice(double price) {
+		this.price = price;
 	}
     
 }

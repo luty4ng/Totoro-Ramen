@@ -277,10 +277,6 @@ public class add_on extends JFrame {
 				if(e.getSource() == btnNext) {
 					setVisible(false);
 					noodle.add(number1,number2, number3, number4);
-					System.out.print(number1);
-					System.out.print(number2);
-					System.out.print(number3);
-					System.out.print(number4);
 					order.addNoodleOrder(noodle);
 					JFrame confirm_order= new confirm_order(order);
 				}
