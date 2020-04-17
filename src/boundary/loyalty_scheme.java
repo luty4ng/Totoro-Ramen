@@ -8,6 +8,9 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import entity.Order;
+
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -15,13 +18,14 @@ import java.awt.event.ActionEvent;
 public class loyalty_scheme extends JFrame {
 
 	private JPanel contentPane;
+	private Order order;
 
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
+/*	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
-			public void run() {
+			public  run() {
 				try {
 					loyalty_scheme frame = new loyalty_scheme();
 					frame.setVisible(true);
@@ -31,11 +35,12 @@ public class loyalty_scheme extends JFrame {
 			}
 		});
 	}
-
+*/
 	/**
 	 * Create the frame.
 	 */
-	public loyalty_scheme() {
+	public loyalty_scheme(Order order) {
+		this.order = order;
 		setTitle("Are you a VIP member?");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(740, 200, 800, 740);
@@ -54,7 +59,7 @@ public class loyalty_scheme extends JFrame {
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				setVisible(false);
-				JFrame VIP_log_in= new VIP_log_in();
+				JFrame VIP_log_in= new VIP_log_in(order);
 			}
 		});
 		btnNewButton.setBounds(251, 257, 296, 74);
@@ -65,7 +70,7 @@ public class loyalty_scheme extends JFrame {
 		btnNoIAmnt.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				setVisible(false);
-				JFrame whether_register = new whether_register();
+				JFrame whether_register = new whether_register(order);
 			}
 		});
 		btnNoIAmnt.setBounds(251, 368, 296, 74);

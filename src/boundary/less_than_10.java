@@ -9,6 +9,10 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
+
+import entity.Member;
+import entity.Order;
+
 import javax.swing.JButton;
 
 import java.awt.event.ActionEvent;
@@ -19,11 +23,12 @@ import java.awt.event.MouseEvent;
 public class less_than_10 extends JFrame {
 
 	private JPanel contentPane;
-
+    private Order order;
+    private Member member;
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
+/*	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -35,11 +40,16 @@ public class less_than_10 extends JFrame {
 			}
 		});
 	}
-
+*/
 	/**
 	 * Create the frame.
 	 */
-	public less_than_10() {
+	public less_than_10(Order order, String memberNumber) {
+		this.order = order;
+		this.order.setMember(memberNumber);
+		member = this.order.getMember();
+		String stampNum = member.getStamps(memberNumber);
+
 		setTitle("Log in successfully");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(740, 200, 800, 740);
@@ -60,7 +70,7 @@ public class less_than_10 extends JFrame {
 		lblNotEnoughFor.setBounds(62, 123, 660, 35);
 		contentPane.add(lblNotEnoughFor);
 		
-		JLabel lblYouHaveX = new JLabel("You have X virtual stamps.");
+		JLabel lblYouHaveX = new JLabel("You have "+stampNum+" virtual stamps.");
 		lblYouHaveX.setHorizontalAlignment(SwingConstants.CENTER);
 		lblYouHaveX.setFont(new Font("Times New Roman", Font.PLAIN, 36));
 		lblYouHaveX.setBounds(62, 279, 660, 35);
@@ -77,7 +87,7 @@ public class less_than_10 extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				if(e.getSource() == btnNewButton) {
 					setVisible(false);
-					JFrame pay_ment_interface= new pay_ment_interface();
+					JFrame pay_ment_interface= new pay_ment_interface(order);
 				}
 			}
 		});

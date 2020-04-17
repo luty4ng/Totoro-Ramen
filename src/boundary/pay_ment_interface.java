@@ -10,9 +10,13 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JTable;
+import javax.swing.SwingConstants;
 import javax.swing.border.EtchedBorder;
 import java.awt.Color;
 import javax.swing.table.DefaultTableModel;
+
+import entity.Order;
+
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import java.awt.event.MouseAdapter;
@@ -22,11 +26,11 @@ import javax.swing.JCheckBox;
 public class pay_ment_interface extends JFrame {
 	//继续调用getOrderDetailed方法，并且展示订单。最终结束
 	private JPanel contentPane;
-
+	private Order order;
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
+/*	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -38,11 +42,12 @@ public class pay_ment_interface extends JFrame {
 			}
 		});
 	}
-
+*/
 	/**
 	 * Create the frame.
 	 */
-	public pay_ment_interface() {
+	public pay_ment_interface(Order order) {
+		this.order = order;
 		setTitle("Your order is ");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(740, 200, 800, 740);
@@ -60,34 +65,36 @@ public class pay_ment_interface extends JFrame {
 		scrollPane.setBounds(25, 77, 721, 412);
 		contentPane.add(scrollPane);
 
+		String[][] orderDetail = order.getOrderDetail();
+		double price = order.getTotalPrice();
+		System.out.print(orderDetail);
 	    String [] columnName = {
 	            "Items",
                 "Number",
                 "Price"
         };
-        Object [][] data={
-                {"zhp",20,1},
-                {"zyh",2,1},
-                {"zk",2,2},
-                {"zhp",20,1},
-                {"zyh",2,1},
-                {"zk",2,2},
-                {"zhp",20,1}
-        };
-        JTable jTable=new JTable(data,columnName);
+	    JTable jTable=new JTable(orderDetail,columnName);
+        jTable.setFont(new Font("Times New Roman", Font.PLAIN, 15));
         jTable.setRowHeight(25);
         scrollPane.setViewportView(jTable);
+        
+/*        JTable jTable=new JTable(data,columnName);
+        jTable.setRowHeight(25);
+        scrollPane.setViewportView(jTable);*/
         
         JButton btnNewButton = new JButton("pay by bank card");
         btnNewButton.addMouseListener(new MouseAdapter() {
         	@Override
         	public void mouseClicked(MouseEvent arg0) {
         		setVisible(false);
+        		order.printOrder();
+        		order.outPutOrder();
+        		order.orderFinish();
         		JFrame deal_complete = new deal_complete();
         	}
         });
         btnNewButton.setFont(new Font("Times New Roman", Font.BOLD, 20));
-        btnNewButton.setBounds(36, 609, 334, 59);
+        btnNewButton.setBounds(36, 615, 334, 59);
         contentPane.add(btnNewButton);
         
         JButton btnConfirm = new JButton("pay by cash");
@@ -95,11 +102,14 @@ public class pay_ment_interface extends JFrame {
         	@Override
         	public void mouseClicked(MouseEvent e) {
         		setVisible(false);
+        		order.printOrder();
+        		order.outPutOrder();
+        		order.orderFinish();
         		JFrame deal_complete = new deal_complete();
         	}
         });
         btnConfirm.setFont(new Font("Times New Roman", Font.BOLD, 20));
-        btnConfirm.setBounds(406, 609, 334, 59);
+        btnConfirm.setBounds(406, 615, 334, 59);
         contentPane.add(btnConfirm);
         
         JPanel panel1 = new JPanel();
@@ -108,12 +118,21 @@ public class pay_ment_interface extends JFrame {
         contentPane.add(panel1);
         panel1.setLayout(null);
         
-        double totalprice = 9.9;//the total price of the order 
-        JLabel total = new JLabel ("in total:");
+        double discountValue = 0.0;
+        double totalprice = order.getTotalPrice();//the total price of the order
+        double needPay = totalprice;
+        if(order.getMember() != null) {
+        	if(Integer.parseInt(order.getMember().getStamps(order.getMember().getmID())) >= 10) {
+	        	order.discount();
+	        	needPay = order.getTotalPrice();
+	        	discountValue = totalprice - needPay; //the total discount of the order 
+	        }
+        }        
+        JLabel total = new JLabel("in total:");
         total.setFont(new Font("Times New Roman", Font.BOLD, 20));
         total.setBounds(10, 9, 106, 27);
         panel1.add(total);
-        JLabel total2 = new JLabel (""+totalprice);
+        JLabel total2 = new JLabel(""+totalprice);
         total2.setFont(new Font("Times New Roman", Font.BOLD, 20));
         total2.setBounds(275, 9, 106, 27);
         panel1.add(total2);
@@ -123,8 +142,7 @@ public class pay_ment_interface extends JFrame {
         panel2.setBounds(405, 518, 340, 48);
         contentPane.add(panel2);
         panel2.setLayout(null);
-        
-        double discountValue = 9.9;//the total price of the order 
+
         JLabel discount = new JLabel ("discount:");
         discount.setFont(new Font("Times New Roman", Font.BOLD, 20));
         discount.setBounds(10, 9, 106, 27);
@@ -133,6 +151,16 @@ public class pay_ment_interface extends JFrame {
         discount2.setFont(new Font("Times New Roman", Font.BOLD, 20));
         discount2.setBounds(275, 9, 106, 27);
         panel2.add(discount2);
+        
+        JPanel panel3 = new JPanel();
+        panel3.setBounds(220, 570, 340, 48);
+        contentPane.add(panel3);
+        panel3.setLayout(null);
+        JLabel needPayLabel = new JLabel ("You need to pay "+needPay+"$");
+        needPayLabel.setFont(new Font("Times New Roman", Font.BOLD, 23));
+        needPayLabel.setHorizontalAlignment(SwingConstants.CENTER);
+        needPayLabel.setBounds(10, 9, 306, 27);
+        panel3.add(needPayLabel);
         
         setVisible(true);
 	}
