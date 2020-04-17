@@ -13,7 +13,6 @@ public class DataProcessor {
 	//	Constructor: define which csv file you want to access
 	public DataProcessor(String fileName) {
 		csvFile = new File(fileName);
-		boolean flag = !this.csvFile.exists();
 		if(!this.csvFile.exists())
 			try {
 				csvFile.createNewFile();
@@ -26,10 +25,7 @@ public class DataProcessor {
 		try {
 			csvReader = new BufferedReader(new FileReader(csvFile));
 			try {
-				if(flag)
-					firstLine = " ";
-				else
-					firstLine = csvReader.readLine();
+				firstLine = csvReader.readLine();
 				String[] fields = firstLine.split(",");
 				
 				for(int i=0;i<fields.length;i++)

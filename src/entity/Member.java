@@ -102,13 +102,13 @@ public class Member {
 	}
 	
 	
-	public String register(String surName,String firstName, String email, String phoneNum) throws Exception
+	public String register(String surName,String firstName, String email, String phoneNum)
 	{
 		String mid = idGenerator(6);
 		if(!checkFormat(email,"email"))
-			throw new Exception("Email format is incorrect");
+			return "email";
 		if(!checkFormat(phoneNum,"phone") && phoneNum.length() >= 11)
-			throw new Exception("Phone Number format is incorrect");
+			return "phone";
 		
 		while(this.checkMember(mid))
 			mid = idGenerator(6);
@@ -142,7 +142,7 @@ public class Member {
 		{
 			if(i.split(",")[0].equals(mid))
 			{
-				String new_str = i.substring(0,i.length()-1) + Integer.toString(Integer.parseInt(i.substring(i.length()-1))-1);
+				String new_str = i.substring(0,i.length()-2) + "0";
 				data.set(count, new_str);
 			}
 			count++;
@@ -160,6 +160,7 @@ public class Member {
 			{
 				String new_str = i.substring(0,i.length()-1) + Integer.toString(Integer.parseInt(i.substring(i.length()-1))+1);
 				data.set(count, new_str);
+				
 			}
 			count++;
 		}
@@ -168,30 +169,17 @@ public class Member {
 	
 	public static void main(String[] args) {
 		Member member = new Member();
+		String mid = "222222";
 		
-		String mid = "636984";
-		String new_surName = "Wu";
-		String new_firstName = "Wang";
-		String new_email = "123@gmail.com";
-		String new_phoneNum = "18810727322";
-		
-		
-		
-		try {
-			String new_mid = member.register(new_surName,new_firstName,new_email,new_phoneNum);
-			System.out.println("You successfully register, you member id is " + new_mid);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		
-		member.addStamps(mid);
-		
-		member.useStamps(mid);
+		//member.test();
+		//member.addStamps(mid);
+		//member.test();
+		//member.useStamps(mid);
 		
 		if(member.login(mid))
 			System.out.println("The Stamps you have: " + member.getStamps(mid));
 		
 		
-		member.deleteMember("111111");
+		//member.deleteMember("111111");
 	}
 }
