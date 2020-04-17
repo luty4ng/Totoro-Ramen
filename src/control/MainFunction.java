@@ -1,7 +1,5 @@
 package control;
 
-import java.awt.EventQueue;
-
 import boundary.welcome;
 
 public class MainFunction {

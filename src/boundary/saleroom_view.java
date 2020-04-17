@@ -30,30 +30,32 @@ public class saleroom_view {
 		entity.DataProcessor user = new entity.DataProcessor("data/order.csv");
 		ArrayList<String> number1 = user.Read();
 		//get size of the file
-		int monday = 0;
-		int tuesday= 0;
-		int wednesday = 0;
-		int thursday = 0;
-		int friday = 0;
-		int saturday = 0;
-		int sunday = 0;
+		double monday = 0;
+		double tuesday= 0;
+		double wednesday = 0;
+		double thursday = 0;
+		double friday = 0;
+		double saturday = 0;
+		double sunday = 0;
 		for(int j=0; j<number1.size(); j++) {
 			String temp = number1.get(j);
 			String[] str = temp.split(",");
-			if(str[1].equals("1")) {
-				monday = monday + Integer.parseInt(str[3]);
-			}else if(str[1].equals("2")) {
-				tuesday = tuesday + Integer.parseInt(str[3]);
-			}else if(str[1].equals("3")) {
-				wednesday = wednesday + Integer.parseInt(str[3]);
+			if(str.length == 5){
+				if(str[1].equals("1")) {
+					monday = monday + Double.parseDouble(str[3]);
+				}else if(str[1].equals("2")) {
+					tuesday = tuesday + Double.parseDouble(str[3]);
+				}else if(str[1].equals("3")) {
+					wednesday = wednesday + Double.parseDouble(str[3]);
 				}else if(str[1].equals("4")) {
-				thursday = thursday + Integer.parseInt(str[3]);
-			}else if(str[1].equals("5")) {
-				friday = friday + Integer.parseInt(str[3]);
-			}else if(str[1].equals("6")) {
-				saturday = saturday + Integer.parseInt(str[3]);
-			}else {
-				sunday = sunday + Integer.parseInt(str[3]);
+					thursday = thursday + Double.parseDouble(str[3]);
+				}else if(str[1].equals("5")) {
+					friday = friday + Double.parseDouble(str[3]);
+				}else if(str[1].equals("6")) {
+					saturday = saturday + Double.parseDouble(str[3]);
+				}else {
+					sunday = sunday + Double.parseDouble(str[3]);
+				}
 			}
 		}
 

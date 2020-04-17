@@ -33,18 +33,20 @@ public class spiciness_view{
 				for(int j=0; j<number1.size(); j++) {
 						String temp = number1.get(j);
 						String[] str = temp.split(",");
-						if(str[7].equals("0")) {
-							sp0++;
-						}else if(str[7].equals("1")){
-							sp1++;
-						}else if(str[7].equals("2")) {
-							sp2++;
-						}else if(str[7].equals("3")) {
-							sp3++;
-						}else if(str[7].equals("4")) {
-							sp4++;
-						}else {
-							sp5++;
+						if(str.length != 5){
+							if(str[7].equals("0")) {
+								sp0++;
+							}else if(str[7].equals("1")){
+								sp1++;
+							}else if(str[7].equals("2")) {
+								sp2++;
+							}else if(str[7].equals("3")) {
+								sp3++;
+							}else if(str[7].equals("4")) {
+								sp4++;
+							}else {
+								sp5++;
+							}
 						}
 				}
 		 
