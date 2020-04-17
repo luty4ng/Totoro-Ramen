@@ -12,14 +12,16 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import entity.Order;
+
 public class whether_register extends JFrame {
 
 	private JPanel contentPane;
-
+	private Order order;
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
+/*	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -31,11 +33,12 @@ public class whether_register extends JFrame {
 			}
 		});
 	}
-
+*/
 	/**
 	 * Create the frame.
 	 */
-	public whether_register() {
+	public whether_register(Order order) {
+		this.order = order;
 		setTitle("Whether register or not?");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(740, 200, 800, 740);
@@ -54,7 +57,7 @@ public class whether_register extends JFrame {
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				setVisible(false);
-				JFrame VIP_register= new VIP_register();
+				JFrame VIP_register= new VIP_register(order);
 			}
 		});
 		btnNewButton.setBounds(219, 260, 349, 74);
@@ -65,7 +68,7 @@ public class whether_register extends JFrame {
 		btnNoIAmnt.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				setVisible(false);
-				JFrame pay_ment_interface= new pay_ment_interface();
+				JFrame pay_ment_interface = new pay_ment_interface(order);
 			}
 		});
 		btnNoIAmnt.setBounds(219, 371, 349, 74);
@@ -76,7 +79,7 @@ public class whether_register extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				if(e.getSource() == btnBack) {
 					setVisible(false);
-					JFrame loyalty_scheme= new loyalty_scheme();
+					JFrame loyalty_scheme= new loyalty_scheme(order);
 				}
 			}
 		});

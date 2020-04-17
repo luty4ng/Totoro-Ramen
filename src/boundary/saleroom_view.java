@@ -13,7 +13,7 @@ import org.jfree.chart.plot.PlotOrientation;
 import org.jfree.chart.title.TextTitle;
 import org.jfree.data.category.DefaultCategoryDataset;
 
-//´´½¨Ò»¸öÌõÐÎÈÝÍ³¼ÆÍ¼
+//ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í³ï¿½ï¿½Í¼
 
 public class saleroom_view {
 
@@ -78,60 +78,60 @@ public class saleroom_view {
 		dataset.addValue(sunday, "sunday","week");
 		
 
-		// ´´½¨JFreeChart¶ÔÏó
+		// ï¿½ï¿½ï¿½ï¿½JFreeChartï¿½ï¿½ï¿½ï¿½
 
 		JFreeChart barChart =  ChartFactory.createBarChart3D(
 
-				"saleroom",//±êÌâ
+				"saleroom",//ï¿½ï¿½ï¿½ï¿½
 
-				"variety",     //xÖá±êÇ©
+				"variety",     //xï¿½ï¿½ï¿½Ç©
 
-				"quantity" ,    //yÖá±êÇ©
+				"quantity" ,    //yï¿½ï¿½ï¿½Ç©
 
-				dataset,    //Êý¾Ý¼¯
+				dataset,    //ï¿½ï¿½ï¿½Ý¼ï¿½
 
-				PlotOrientation.VERTICAL,//ÉèÖÃYÖáµÄ·½Ïò´¹Ö±
+				PlotOrientation.VERTICAL,//ï¿½ï¿½ï¿½ï¿½Yï¿½ï¿½Ä·ï¿½ï¿½ï¿½Ö±
 
-				true,       //ÏÔÊ¾Í¼Àý
+				true,       //ï¿½ï¿½Ê¾Í¼ï¿½ï¿½
 
-				true,       //²»Éú³É¹¤¾ß
+				true,       //ï¿½ï¿½ï¿½ï¿½ï¿½É¹ï¿½ï¿½ï¿½
 
-				true        //²»Éú³ÉÁ¬½Ó
+				true        //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 
 				);
 
 		
 
-		//ÉèÖÃ×ÖÌåÊôÐÔ
+		//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 
 		CategoryPlot barPlot = barChart.getCategoryPlot();
 
-		barChart.getLegend().setItemFont(new Font("ËÎÌå", Font.PLAIN, 12)); //µ×²¿±êÇ©
+		barChart.getLegend().setItemFont(new Font("ï¿½ï¿½ï¿½ï¿½", Font.PLAIN, 12)); //ï¿½×²ï¿½ï¿½ï¿½Ç©
 
        
 
-		CategoryAxis domainAxis = barPlot.getDomainAxis(); //xÖá±êÇ©ÉèÖÃ
+		CategoryAxis domainAxis = barPlot.getDomainAxis(); //xï¿½ï¿½ï¿½Ç©ï¿½ï¿½ï¿½ï¿½
 
 		 domainAxis.setTickLabelFont(new Font("sans-serif", Font.PLAIN, 11));  
 
-	     domainAxis.setLabelFont(new Font("ËÎÌå", Font.PLAIN, 12)); 
+	     domainAxis.setLabelFont(new Font("ï¿½ï¿½ï¿½ï¿½", Font.PLAIN, 12)); 
 
 	        
 
-        ValueAxis rAxis = barPlot.getRangeAxis();        //yÖá±êÇ©ÉèÖÃ
+        ValueAxis rAxis = barPlot.getRangeAxis();        //yï¿½ï¿½ï¿½Ç©ï¿½ï¿½ï¿½ï¿½
 
         rAxis.setTickLabelFont(new Font("sans-serif", Font.PLAIN, 12));  
 
-        rAxis.setLabelFont(new Font("ËÎÌå", Font.PLAIN, 12));  
+        rAxis.setLabelFont(new Font("ï¿½ï¿½ï¿½ï¿½", Font.PLAIN, 12));  
 
 		
 
-        TextTitle textTitle = barChart.getTitle();  //±êÇ©ÉèÖÃ
+        TextTitle textTitle = barChart.getTitle();  //ï¿½ï¿½Ç©ï¿½ï¿½ï¿½ï¿½
 
-        textTitle.setFont(new Font("ËÎÌå", Font.PLAIN, 20));  
+        textTitle.setFont(new Font("ï¿½ï¿½ï¿½ï¿½", Font.PLAIN, 20));  
 
         
-		//ÒÔswingµÄÐÎÊ½Êä³öÍ¼±í
+		//ï¿½ï¿½swingï¿½ï¿½ï¿½ï¿½Ê½ï¿½ï¿½ï¿½Í¼ï¿½ï¿½
 
 		ChartFrame barChartFrameframe = new ChartFrame("barChartFrame",barChart);
 

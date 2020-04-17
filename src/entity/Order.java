@@ -21,13 +21,15 @@ public class Order {
 		DataProcessor processor = new DataProcessor("data/configure.csv");
 		noodleOrder = new ArrayList<NoodleOrder>();
 		String[] currentOID = processor.Read().get(0).split(",");
+		System.out.println(currentOID[0]);
 		int inputID = Integer.parseInt(currentOID[0]);
-		
 		Calendar cal = Calendar.getInstance(); 
 		cal.setTime(orderTime);
 		int weekday = cal.get(cal.DAY_OF_WEEK);
 		
 		this.oID = "" + weekday; //the day of the week.
+		System.out.println(inputID);
+		this.oID = "1"; //the day of the week.
 		for(int i=0;i<(5-currentOID[0].length());i++)
 			this.oID += "0";
 		this.oID += currentOID[0];
@@ -69,6 +71,10 @@ public class Order {
 		this.totalPrice = price;
 		return this.totalPrice;
 	}
+	
+//	public double getTotalPriceDirectly() {
+//		return this.totalPrice;
+//	}
 
 	public Member getMember() {
 		return member;
@@ -79,7 +85,7 @@ public class Order {
 	}
 	
 	public boolean setMember(String memberNumber) {
-		//this.member = new Member(memberNumber);
+		this.member = new Member(memberNumber);
 		if(this.member == null)
 			return false;
 		else

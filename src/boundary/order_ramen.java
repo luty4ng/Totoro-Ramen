@@ -12,6 +12,7 @@ import javax.swing.border.TitledBorder;
 
 import entity.NoodleOrder;
 import entity.Order;
+import entity.OrderMenu;
 
 import javax.swing.JRadioButton;
 import javax.swing.JLabel;
@@ -43,6 +44,7 @@ public class order_ramen extends JFrame {
     private String boiledEgg = "Yes";
     private int spiciness = 0;
     private int n;
+    private OrderMenu ordermenu;
 	/**
 	 * Launch the application.
 	 */
@@ -67,6 +69,9 @@ public class order_ramen extends JFrame {
 		
 	    this.order = order;
 	    this.id = order.getoID();
+	    this.ordermenu = new OrderMenu();
+	    int noriAvailable = ordermenu.getnoriAvailable(), eggAvailable = ordermenu.geteggAvailable(),
+				bambooAvailable = ordermenu.getbambooAvailable(), chashuAvailable = ordermenu.getchashuAvailable();
 
 	    this.n = this.order.getSubOrderNumber() + 1;
 		
@@ -77,8 +82,8 @@ public class order_ramen extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-	
-		JLabel lblThePriceOf = new JLabel("The price of a ramen is " + order.menu.getnoodlePrice() + "£");
+
+		JLabel lblThePriceOf = new JLabel("The price of a ramen is "+this.ordermenu.getnoodlePrice()+"$");
 		lblThePriceOf.setFont(new Font("Times New Roman", Font.PLAIN, 35));
 		lblThePriceOf.setBounds(26, 32, 547, 35);
 		contentPane.add(lblThePriceOf);
@@ -263,7 +268,7 @@ public class order_ramen extends JFrame {
 		rdbtnYes.setBounds(150, 234, 93, 27);
 		group4.add(rdbtnYes);
 		panel.add(rdbtnYes);
-		rdbtnYes.setSelected(true);
+		
 		
 		JRadioButton rdbtnNo = new JRadioButton("No");
 		rdbtnNo.addMouseListener(new MouseAdapter() {
@@ -278,6 +283,12 @@ public class order_ramen extends JFrame {
 		rdbtnNo.setBounds(350, 234, 77, 27);
 		group4.add(rdbtnNo);
 		panel.add(rdbtnNo);
+		if(noriAvailable == 0) {
+			rdbtnYes.setEnabled(false);
+			rdbtnNo.setEnabled(false);
+		}else {
+			rdbtnYes.setSelected(true);
+		}
 	
 		JLabel lblChashu = new JLabel("Chashu");
 		lblChashu.setToolTipText("");
@@ -299,7 +310,6 @@ public class order_ramen extends JFrame {
 		rdbtnYes_2.setBounds(150, 299, 77, 27);
 		group5.add(rdbtnYes_2);
 		panel.add(rdbtnYes_2);
-		rdbtnYes_2.setSelected(true);
 
 		JRadioButton rdbtnNo_1 = new JRadioButton("No");
 		rdbtnNo_1.addMouseListener(new MouseAdapter() {
@@ -314,6 +324,12 @@ public class order_ramen extends JFrame {
 		rdbtnNo_1.setBounds(350, 299, 58, 27);
 		group5.add(rdbtnNo_1);
 		panel.add(rdbtnNo_1);
+		if(chashuAvailable == 0) {
+			rdbtnYes_2.setEnabled(false);
+			rdbtnNo_1.setEnabled(false);
+		}else {
+			rdbtnYes_2.setSelected(true);
+		}
 		
 		JLabel lblBoiledEgg = new JLabel("Boiled egg");
 		lblBoiledEgg.setFont(new Font("Times New Roman", Font.BOLD, 22));
@@ -334,7 +350,6 @@ public class order_ramen extends JFrame {
 		rdbtnYes_1.setBounds(150, 364, 66, 27);
 		group6.add(rdbtnYes_1);
 		panel.add(rdbtnYes_1);
-		rdbtnYes_1.setSelected(true);
 		
 		JRadioButton rdbtnNo_2 = new JRadioButton("No");
 		rdbtnNo_2.addMouseListener(new MouseAdapter() {
@@ -349,6 +364,12 @@ public class order_ramen extends JFrame {
 		rdbtnNo_2.setBounds(350, 364, 58, 27);
 		group6.add(rdbtnNo_2);
 		panel.add(rdbtnNo_2);
+		if(eggAvailable == 0) {
+			rdbtnYes_1.setEnabled(false);
+			rdbtnNo_2.setEnabled(false);
+		}else {
+			rdbtnYes_1.setSelected(true);
+		}
 		
 		JLabel lblSpiciness = new JLabel("Spiciness");
 		lblSpiciness.setToolTipText("");

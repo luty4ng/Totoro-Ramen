@@ -16,6 +16,7 @@ import javax.swing.table.DefaultTableModel;
 
 import entity.NoodleOrder;
 import entity.Order;
+import entity.OrderMenu;
 
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
@@ -27,6 +28,12 @@ public class confirm_order extends JFrame {
 
 	private JPanel contentPane;
 	private Order order;
+	private int restNum1 = 0;
+	private int restNum2 = 0;
+	private int restNum3 = 0;
+	private int restNum4 = 0;
+	private OrderMenu ordermenu;
+	private String[][] detail;
 	/**
 	 * Launch the application.
 	 */
@@ -50,6 +57,22 @@ public class confirm_order extends JFrame {
 	public confirm_order(Order order) {
 		this.order = order;
 		this.order.setDiningOption("Eat In");
+		this.ordermenu = new OrderMenu();
+		int noriAvailable = ordermenu.getnoriAvailable(), eggAvailable = ordermenu.geteggAvailable(),
+				bambooAvailable = ordermenu.getbambooAvailable(), chashuAvailable = ordermenu.getchashuAvailable();
+		this.restNum1 = noriAvailable;
+		this.restNum2 = eggAvailable;
+		this.restNum3 = bambooAvailable;
+		this.restNum4 = chashuAvailable;
+		if(order.getSubOrderNumber() > 0) {
+			this.detail = this.order.getOrderDetail();
+			for(int i=0; i<order.getSubOrderNumber(); i++) {
+				this.restNum1 = this.restNum1 - Integer.parseInt(this.detail[5*i+1][1]);
+				this.restNum2 = this.restNum2 - Integer.parseInt(this.detail[5*i+2][1]);
+				this.restNum3 = this.restNum3 - Integer.parseInt(this.detail[5*i+3][1]);
+				this.restNum4 = this.restNum4 - Integer.parseInt(this.detail[5*i+4][1]);
+			}
+		}
 		// TODO Auto-generated constructor stub
 		setTitle("Confirm your order");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -96,12 +119,15 @@ public class confirm_order extends JFrame {
         btnConfirm.addMouseListener(new MouseAdapter() {
         	@Override
         	public void mouseClicked(MouseEvent e) {
+        		ordermenu.setnoriAvailable(restNum1);
+        		ordermenu.seteggAvailable(restNum2);
+        		ordermenu.setbambooAvailable(restNum3);
+        		ordermenu.setchashuAvailable(restNum4);
+        		ordermenu.writeMenu();
         		setVisible(false);
-        		order.printOrder();//will be remove just for iteration 1.
-        		JFrame deal_complete= new deal_complete();
-				//JFrame loyalty_scheme= new loyalty_scheme();
-        		order.outPutOrder();
-        		order.orderFinish();
+        		
+        		JFrame loyalty_scheme = new loyalty_scheme(order);
+        		
         	}
         });
         btnConfirm.setFont(new Font("Times New Roman", Font.BOLD, 25));

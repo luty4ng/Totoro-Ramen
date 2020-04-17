@@ -121,5 +121,13 @@ public class NoodleOrder {
 	public void setPrice(double price) {
 		this.price = price;
 	}
-    
+	public String getNori() {
+		  return this.nori;
+	}
+	public String getchashu() {
+		  return this.chashu;
+	}
+	public String getegg() {
+		  return this.boiledEgg;
+	}
 }
