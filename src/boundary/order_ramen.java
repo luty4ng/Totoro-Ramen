@@ -19,6 +19,8 @@ import javax.swing.JLabel;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 
 import javax.swing.SwingConstants;
 import javax.swing.UIManager;
@@ -30,7 +32,8 @@ import java.awt.event.MouseEvent;
 import javax.swing.event.ChangeListener;
 import javax.swing.event.ChangeEvent;
 
-public class order_ramen extends JFrame {
+
+public class order_ramen extends JFrame implements ItemListener {
 
 	private JPanel contentPane;
 	
@@ -39,9 +42,9 @@ public class order_ramen extends JFrame {
 	private String soup = "Tonkotsu";
     private String noodles = "Soft";
     private String springOnion = "No please";
-    private String nori = "Yes";
-    private String chashu = "Yes";
-    private String boiledEgg = "Yes";
+    private String nori = null;
+    private String chashu = null;
+    private String boiledEgg = null;
     private int spiciness = 0;
     private int n;
     private OrderMenu ordermenu;
@@ -256,21 +259,35 @@ public class order_ramen extends JFrame {
 		
 		ButtonGroup group4=new ButtonGroup();                       //Get nori_____________________________________
 		JRadioButton rdbtnYes = new JRadioButton("Yes");
-		rdbtnYes.addMouseListener(new MouseAdapter() {
+		rdbtnYes.addItemListener(new ItemListener(){
+			public void itemStateChanged (ItemEvent e) {
+			if(e.getSource() == rdbtnYes)
+				nori = "Yes";
+			}
+		});
+		
+		/*rdbtnYes.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				if(e.getSource() == rdbtnYes) {
 					nori = "Yes";
 				}
 			}
-		});
+		});*/
 		rdbtnYes.setFont(new Font("Times New Roman", Font.PLAIN, 21));
 		rdbtnYes.setBounds(150, 234, 93, 27);
 		group4.add(rdbtnYes);
 		panel.add(rdbtnYes);
 		
-		
 		JRadioButton rdbtnNo = new JRadioButton("No");
+		rdbtnNo.addItemListener(new ItemListener(){
+			public void itemStateChanged (ItemEvent e) {
+			if(e.getSource() == rdbtnNo)
+				nori = "No";
+			}
+		});
+		
+		/*JRadioButton rdbtnNo = new JRadioButton("No");
 		rdbtnNo.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -278,7 +295,7 @@ public class order_ramen extends JFrame {
 					nori = "No";
 				}
 			}
-		});
+		});*/
 		rdbtnNo.setFont(new Font("Times New Roman", Font.PLAIN, 21));
 		rdbtnNo.setBounds(350, 234, 77, 27);
 		group4.add(rdbtnNo);
@@ -298,28 +315,42 @@ public class order_ramen extends JFrame {
 		
 		ButtonGroup group5=new ButtonGroup();                       //Get chashu_____________________________________
 		JRadioButton rdbtnYes_2 = new JRadioButton("Yes");
-		rdbtnYes_2.addMouseListener(new MouseAdapter() {
+		
+		rdbtnYes_2.addItemListener(new ItemListener(){
+			public void itemStateChanged (ItemEvent e) {
+			if(e.getSource() == rdbtnYes_2)
+				chashu = "Yes";
+			}
+		});
+		/*rdbtnYes_2.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				if(e.getSource() == rdbtnYes_2) {
 					chashu = "Yes";
 				}
 			}
-		});
+		});*/
+		
 		rdbtnYes_2.setFont(new Font("Times New Roman", Font.PLAIN, 21));
 		rdbtnYes_2.setBounds(150, 299, 77, 27);
 		group5.add(rdbtnYes_2);
 		panel.add(rdbtnYes_2);
 
 		JRadioButton rdbtnNo_1 = new JRadioButton("No");
-		rdbtnNo_1.addMouseListener(new MouseAdapter() {
+		rdbtnNo_1.addItemListener(new ItemListener(){
+			public void itemStateChanged (ItemEvent e) {
+			if(e.getSource() == rdbtnNo_1)
+				chashu = "No";
+			}
+		});
+		/*rdbtnNo_1.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				if(e.getSource() == rdbtnNo_1) {
 					chashu = "No";
 				}
 			}
-		});
+		});*/
 		rdbtnNo_1.setFont(new Font("Times New Roman", Font.PLAIN, 21));
 		rdbtnNo_1.setBounds(350, 299, 58, 27);
 		group5.add(rdbtnNo_1);
@@ -338,28 +369,42 @@ public class order_ramen extends JFrame {
 		
 		ButtonGroup group6=new ButtonGroup();                       //Get boiled egg_____________________________________
 		JRadioButton rdbtnYes_1 = new JRadioButton("Yes");
-		rdbtnYes_1.addMouseListener(new MouseAdapter() {
+		
+		rdbtnYes_1.addItemListener(new ItemListener(){
+			public void itemStateChanged (ItemEvent e) {
+			if(e.getSource() == rdbtnYes_1)
+				boiledEgg = "Yes";
+			}
+		});
+		/*rdbtnYes_1.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				if(e.getSource() == rdbtnYes_1) {
 					boiledEgg = "Yes";
 				}
 			}
-		});
+		});*/
 		rdbtnYes_1.setFont(new Font("Times New Roman", Font.PLAIN, 21));
 		rdbtnYes_1.setBounds(150, 364, 66, 27);
 		group6.add(rdbtnYes_1);
 		panel.add(rdbtnYes_1);
 		
 		JRadioButton rdbtnNo_2 = new JRadioButton("No");
-		rdbtnNo_2.addMouseListener(new MouseAdapter() {
+		
+		rdbtnNo_2.addItemListener(new ItemListener(){
+			public void itemStateChanged (ItemEvent e) {
+			if(e.getSource() == rdbtnNo_2)
+				boiledEgg= "No";
+			}
+		});
+		/*rdbtnNo_2.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				if(e.getSource() == rdbtnNo_2) {
 					boiledEgg = "No";
 				}
 			}
-		});
+		});*/
 		rdbtnNo_2.setFont(new Font("Times New Roman", Font.PLAIN, 21));
 		rdbtnNo_2.setBounds(350, 364, 58, 27);
 		group6.add(rdbtnNo_2);
@@ -417,5 +462,11 @@ public class order_ramen extends JFrame {
 		contentPane.add(btnNext);
 
 		setVisible(true);
+	}
+
+	@Override
+	public void itemStateChanged(ItemEvent e) {
+		// TODO Auto-generated method stub
+		
 	}
 }

@@ -118,6 +118,7 @@ public class VIP_log_in extends JFrame {
         	public void mouseClicked(MouseEvent e) {
         		if(member.login(textField.getText())) {
         			setVisible(false);
+        			String a = member.getStamps(textField.getText());
         			if(Integer.parseInt(member.getStamps(textField.getText())) < 10) {
         				JFrame less_than_10 = new less_than_10(order, textField.getText());
         			}else {

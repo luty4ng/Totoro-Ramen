@@ -87,7 +87,8 @@ public class less_than_10 extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				if(e.getSource() == btnNewButton) {
 					setVisible(false);
-					JFrame pay_ment_interface= new pay_ment_interface(order);
+					order.getMember().addStamps(order.getMember().getmID());
+					JFrame pay_ment_interface= new pay_ment_interface(order,order.getTotalPrice());
 				}
 			}
 		});

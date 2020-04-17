@@ -68,7 +68,7 @@ public class whether_register extends JFrame {
 		btnNoIAmnt.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				setVisible(false);
-				JFrame pay_ment_interface = new pay_ment_interface(order);
+				JFrame pay_ment_interface = new pay_ment_interface(order,order.getTotalPrice());
 			}
 		});
 		btnNoIAmnt.setBounds(219, 371, 349, 74);

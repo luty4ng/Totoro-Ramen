@@ -46,7 +46,7 @@ public class pay_ment_interface extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public pay_ment_interface(Order order) {
+	public pay_ment_interface(Order order, double totalprice) {
 		this.order = order;
 		setTitle("Your order is ");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -67,7 +67,6 @@ public class pay_ment_interface extends JFrame {
 
 		String[][] orderDetail = order.getOrderDetail();
 		double price = order.getTotalPrice();
-		System.out.print(orderDetail);
 	    String [] columnName = {
 	            "Items",
                 "Number",
@@ -119,14 +118,10 @@ public class pay_ment_interface extends JFrame {
         panel1.setLayout(null);
         
         double discountValue = 0.0;
-        double totalprice = order.getTotalPrice();//the total price of the order
         double needPay = totalprice;
         if(order.getMember() != null) {
-        	if(Integer.parseInt(order.getMember().getStamps(order.getMember().getmID())) >= 10) {
-	        	order.discount();
-	        	needPay = order.getTotalPrice();
-	        	discountValue = totalprice - needPay; //the total discount of the order 
-	        }
+	        needPay = order.getTotalPrice();
+	        discountValue = totalprice - needPay; //the total discount of the order 
         }        
         JLabel total = new JLabel("in total:");
         total.setFont(new Font("Times New Roman", Font.BOLD, 20));

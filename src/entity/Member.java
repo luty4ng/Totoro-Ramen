@@ -72,9 +72,10 @@ public class Member {
 	
 	public boolean checkMember(String mid)
 	{
-		for(String i:data)
+		for(String i:data) {
 			if(i.split(",")[0].equals(mid))
 				return true;
+		}
 		return false;
 	}
 	
@@ -155,7 +156,8 @@ public class Member {
 		{
 			if(i.split(",")[0].equals(mid))
 			{
-				String new_str = i.substring(0,i.length()-1) + Integer.toString(Integer.parseInt(i.substring(i.length()-1))-1);
+				String new_str = i.substring(0,i.length()-2) + 0;
+				
 				data.set(count, new_str);
 			}
 			count++;

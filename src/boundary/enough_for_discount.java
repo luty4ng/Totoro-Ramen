@@ -84,8 +84,11 @@ public class enough_for_discount extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				if(e.getSource() == btnNewButton) {
 					member.useStamps(memberNumber);
+					Double total = order.getTotalPrice();
 					setVisible(false);
-					JFrame pay_ment_interface= new pay_ment_interface(order);
+					order.discount();
+					JFrame pay_ment_interface= new pay_ment_interface(order,total);
+					
 				}
 			}
 		});

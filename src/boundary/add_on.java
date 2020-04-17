@@ -76,9 +76,6 @@ public class add_on extends JFrame {
 		this.nori = noodle.getNori();
 		this.chashu = noodle.getchashu();
 		this.boiledEgg = noodle.getegg();
-		System.out.println(this.nori);
-		System.out.println(this.chashu);
-		System.out.println(this.boiledEgg);
 		this.restNum1 = noriAvailable;
 		this.restNum2 = eggAvailable;
 		this.restNum3 = bambooAvailable;
