@@ -96,7 +96,7 @@ public class Member {
 		for(String i:config)
 		{
 			config.remove(0);
-			config.add(i.split(",")[0]+"," + (Integer.toString(Integer.parseInt(i.split(",")[1])-1)));
+			config.add(i.split(",")[0]+"," + (Integer.toString(Integer.parseInt(i.split(",")[1])-10)));
 		}
 		csvConfig.Write(config);
 	}
