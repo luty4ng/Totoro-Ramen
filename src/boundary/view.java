@@ -75,6 +75,18 @@ public class view extends JFrame {
 			}
 		});
 		
+		JButton btnvolume = new JButton("sales volume");
+		btnvolume.setBounds(100, 340, 500, 100);
+		btnvolume.setFont(new Font("Times New Roman", Font.PLAIN, 40));
+		contentPane.add(btnvolume);
+		btnvolume.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if(e.getSource() == btnvolume) {
+					sale_valume lin = new sale_valume();
+					lin.GetDataset();
+				}
+			}
+		});
 		
 		final JButton btnBack = new JButton("back");
 		btnBack.setFont(new Font("Times New Roman", Font.PLAIN, 30));

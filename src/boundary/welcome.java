@@ -13,7 +13,7 @@ import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
-import boundary.Backstagetest;
+import boundary.backstage;
 import entity.Order;
 
 import javax.swing.JLabel;
@@ -67,7 +67,7 @@ public class welcome extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				if(e.getSource() == btnNewButton) {
 					setVisible(false);
-					JFrame Backstagetest= new Backstagetest();
+					JFrame Backstagetest= new backstage();
 				}
 			}
 		});

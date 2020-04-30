@@ -70,7 +70,7 @@ public class add_on extends JFrame {
 	public add_on(Order order, NoodleOrder noodle) {
 		this.noodle = noodle;
 		this.order = order;
-		this.ordermenu = new OrderMenu();
+		this.ordermenu = Order.menu;
 		int noriAvailable = ordermenu.getnoriAvailable(), eggAvailable = ordermenu.geteggAvailable(),
 				bambooAvailable = ordermenu.getbambooAvailable(), chashuAvailable = ordermenu.getchashuAvailable();
 		this.nori = noodle.getNori();

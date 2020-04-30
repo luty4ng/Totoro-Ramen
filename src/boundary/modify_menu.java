@@ -230,7 +230,7 @@ public class modify_menu extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				if(e.getSource() == btnNewButton) {
 					setVisible(false);
-					JFrame Backstagetest = new Backstagetest();
+					JFrame Backstagetest = new backstage();
 				}
 			}
 		});
@@ -353,7 +353,7 @@ public class modify_menu extends JFrame {
 					}
 					ordermenu.writeMenu();
 					setVisible(false);
-					JFrame Backstagetest = new Backstagetest();
+					JFrame Backstagetest = new backstage();
 				}
 			}
 		});

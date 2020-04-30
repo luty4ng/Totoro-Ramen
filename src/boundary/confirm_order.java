@@ -57,7 +57,7 @@ public class confirm_order extends JFrame {
 	public confirm_order(Order order) {
 		this.order = order;
 		this.order.setDiningOption("Eat In");
-		this.ordermenu = new OrderMenu();
+		this.ordermenu = Order.menu;
 		int noriAvailable = ordermenu.getnoriAvailable(), eggAvailable = ordermenu.geteggAvailable(),
 				bambooAvailable = ordermenu.getbambooAvailable(), chashuAvailable = ordermenu.getchashuAvailable();
 		this.restNum1 = noriAvailable;

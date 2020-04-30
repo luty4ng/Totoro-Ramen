@@ -2,25 +2,24 @@ package entity;
 
 
 public class NoodleOrder {
-    private String nID = "zero";
-
-    //Fixed price
-    private String soup = "no_soupw";
-    private String noodles = "no_noodle";
-    private String springOnion = "no_onion";
-    
-    private String nori;
-    private String chashu;
-    private String boiledEgg;
-
-    private int spiciness;//1--5
-    //Add-ons
-    private int extraNori = 0;
-    private int extraBoiledEgg = 0;
-    private int bambooShoots = 0;
-    private int extraChashu = 0;
-
-    private double price = 0;
+	private String nID = "zero";
+	//Fixed price
+	private String soup = "no_soupw";
+	private String noodles = "no_noodle";
+	private String springOnion = "no_onion";
+	
+	private String nori;
+	private String chashu;
+	private String boiledEgg;
+	
+	private int spiciness;//1--5
+	//Add-ons
+	private int extraNori = 0;
+	private int extraBoiledEgg = 0;
+	private int bambooShoots = 0;
+	private int extraChashu = 0;
+	
+	private double price = 0;
     
     public NoodleOrder(int _n,  //The nth suborder of the order
                        String Oid, 

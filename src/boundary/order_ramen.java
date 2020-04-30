@@ -46,7 +46,7 @@ public class order_ramen extends JFrame implements ItemListener {
     private String chashu = null;
     private String boiledEgg = null;
     private int spiciness = 0;
-    private int n;
+    private int number;
     private OrderMenu ordermenu;
 	/**
 	 * Launch the application.
@@ -76,7 +76,7 @@ public class order_ramen extends JFrame implements ItemListener {
 	    int noriAvailable = ordermenu.getnoriAvailable(), eggAvailable = ordermenu.geteggAvailable(),
 				bambooAvailable = ordermenu.getbambooAvailable(), chashuAvailable = ordermenu.getchashuAvailable();
 
-	    this.n = this.order.getSubOrderNumber() + 1;
+	    this.number = this.order.getSubOrderNumber() + 1;
 		
 		setTitle("Order a bowl of ramen");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -451,7 +451,7 @@ public class order_ramen extends JFrame implements ItemListener {
 			public void actionPerformed(ActionEvent e) {
 				if(e.getSource() == btnNext) {
 					
-					NoodleOrder noodle = new NoodleOrder(n, id, soup, noodles, springOnion, nori, chashu, boiledEgg, spiciness);
+					NoodleOrder noodle = new NoodleOrder(number, id, soup, noodles, springOnion, nori, chashu, boiledEgg, spiciness);
 					setVisible(false);
 					JFrame add_on= new add_on(order,noodle);
 				}

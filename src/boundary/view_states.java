@@ -83,7 +83,7 @@ public class view_states extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				if(e.getSource() == btnBack) {
 					setVisible(false);
-					JFrame Backstagetest = new Backstagetest();
+					JFrame Backstagetest = new backstage();
 				}
 			}
 		});

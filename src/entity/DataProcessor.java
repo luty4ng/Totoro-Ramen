@@ -174,11 +174,12 @@ public class DataProcessor {
 	}
 	
 	// just a test function write whatever u want:)
-	public void test() {
+	public String test() {
 		String[] a = "yes;".split(";");
 		String[] b = "yes".split(";");
 		System.out.println(a[0]);
 		System.out.println(b[0]);
+		return "Create Success";
 	}
 	
 	
