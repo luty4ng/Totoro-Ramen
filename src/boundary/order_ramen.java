@@ -5,6 +5,7 @@ import java.awt.Color;
 import java.awt.EventQueue;
 
 import javax.swing.ButtonGroup;
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
@@ -46,7 +47,7 @@ public class order_ramen extends JFrame implements ItemListener {
     private String chashu = null;
     private String boiledEgg = null;
     private int spiciness = 0;
-    private int number;
+    private int n;
     private OrderMenu ordermenu;
 	/**
 	 * Launch the application.
@@ -76,7 +77,7 @@ public class order_ramen extends JFrame implements ItemListener {
 	    int noriAvailable = ordermenu.getnoriAvailable(), eggAvailable = ordermenu.geteggAvailable(),
 				bambooAvailable = ordermenu.getbambooAvailable(), chashuAvailable = ordermenu.getchashuAvailable();
 
-	    this.number = this.order.getSubOrderNumber() + 1;
+	    this.n = this.order.getSubOrderNumber() + 1;
 		
 		setTitle("Order a bowl of ramen");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -95,6 +96,11 @@ public class order_ramen extends JFrame implements ItemListener {
 		lblYouCanChoose.setFont(new Font("Times New Roman", Font.PLAIN, 35));
 		lblYouCanChoose.setBounds(26, 88, 547, 35);
 		contentPane.add(lblYouCanChoose);
+		
+		ImageIcon image=new ImageIcon("picture\\order2.jpg");
+		JLabel imagelable = new JLabel(image);
+		imagelable.setBounds(600, 32, 150, 100);
+		contentPane.add(imagelable);
 		
 		JPanel panel = new JPanel();
 		panel.setBounds(14, 147, 754, 476);
@@ -451,7 +457,7 @@ public class order_ramen extends JFrame implements ItemListener {
 			public void actionPerformed(ActionEvent e) {
 				if(e.getSource() == btnNext) {
 					
-					NoodleOrder noodle = new NoodleOrder(number, id, soup, noodles, springOnion, nori, chashu, boiledEgg, spiciness);
+					NoodleOrder noodle = new NoodleOrder(n, id, soup, noodles, springOnion, nori, chashu, boiledEgg, spiciness);
 					setVisible(false);
 					JFrame add_on= new add_on(order,noodle);
 				}

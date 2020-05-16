@@ -6,6 +6,7 @@ import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -62,6 +63,11 @@ public class whether_register extends JFrame {
 		});
 		btnNewButton.setBounds(219, 260, 349, 74);
 		contentPane.add(btnNewButton);
+		
+		ImageIcon image1 =new ImageIcon("picture\\crown.png");
+		JLabel imagelable1 = new JLabel(image1);
+		imagelable1.setBounds(580, 240, 110, 110);
+		contentPane.add(imagelable1);
 		
 		JButton btnNoIAmnt = new JButton("No, skip it");
 		btnNoIAmnt.setFont(new Font("Times New Roman", Font.PLAIN, 40));

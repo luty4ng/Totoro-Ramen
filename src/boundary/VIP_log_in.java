@@ -9,6 +9,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -64,6 +65,11 @@ public class VIP_log_in extends JFrame {
 		lblThePriceOf.setFont(new Font("Times New Roman", Font.PLAIN, 35));
 		lblThePriceOf.setBounds(170, 160, 472, 41);
 		contentPane.add(lblThePriceOf);
+		
+		ImageIcon image1 =new ImageIcon("picture\\crown.png");
+		JLabel imagelable1 = new JLabel(image1);
+		imagelable1.setBounds(600, 125, 110, 110);
+		contentPane.add(imagelable1);
 		
 		textField = new JTextField();
 		textField.setFont(new Font("ËÎÌו", Font.PLAIN, 35));

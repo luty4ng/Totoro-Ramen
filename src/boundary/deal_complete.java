@@ -6,6 +6,7 @@ import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -52,7 +53,7 @@ public class deal_complete extends JFrame {
 		contentPane.add(lblWelcome);
 		
 		JPanel panel = new JPanel();
-		panel.setBounds(177, 390, 436, 209);
+		panel.setBounds(177, 590, 436, 209);
 		contentPane.add(panel);
 		
 		JButton finish = new JButton("finish");
@@ -73,6 +74,11 @@ public class deal_complete extends JFrame {
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel.setBounds(104, 188, 586, 64);
 		contentPane.add(lblNewLabel);
+		
+		ImageIcon image1 =new ImageIcon("picture//thanks.png");
+		JLabel imagelable1 = new JLabel(image1);
+		imagelable1.setBounds(150, 148, 500, 500);
+		contentPane.add(imagelable1);
 		
 		setVisible(true);
 	}

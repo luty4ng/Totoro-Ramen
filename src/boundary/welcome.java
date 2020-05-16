@@ -7,6 +7,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Date;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -58,7 +59,7 @@ public class welcome extends JFrame {
 		contentPane.add(lblWelcome);
 		
 		JPanel panel = new JPanel();
-		panel.setBounds(146, 390, 481, 209);
+		panel.setBounds(146, 550, 481, 209);
 		contentPane.add(panel);
 		
 		JButton btnNewButton = new JButton("Administrator");
@@ -72,7 +73,7 @@ public class welcome extends JFrame {
 			}
 		});
 		panel.setLayout(null);
-		btnNewButton.setBounds(14, 44, 212, 123);
+		btnNewButton.setBounds(14, 0, 212, 123);
 		panel.add(btnNewButton);
 		
 		JButton btnCustomer = new JButton("Customer");
@@ -88,20 +89,25 @@ public class welcome extends JFrame {
 			}
 		});
 		btnCustomer.setFont(new Font("Times New Roman", Font.PLAIN, 30));
-		btnCustomer.setBounds(259, 44, 208, 123);
+		btnCustomer.setBounds(259, 0, 208, 123);
 		panel.add(btnCustomer);
 		
 		JLabel lblWhatIsYourIdentity = new JLabel("Choose Your Identity Please");
 		lblWhatIsYourIdentity.setFont(new Font("Times New Roman", Font.PLAIN, 26));
 		lblWhatIsYourIdentity.setHorizontalAlignment(SwingConstants.CENTER);
-		lblWhatIsYourIdentity.setBounds(227, 310, 337, 80);
+		lblWhatIsYourIdentity.setBounds(227, 480, 337, 80);
 		contentPane.add(lblWhatIsYourIdentity);
 		
 		JLabel lblNewLabel = new JLabel("Find Delicacy Here");
 		lblNewLabel.setFont(new Font("MV Boli", Font.PLAIN, 42));
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel.setBounds(204, 188, 384, 64);
+		lblNewLabel.setBounds(204, 168, 384, 64);
 		contentPane.add(lblNewLabel);
+		
+		ImageIcon image=new ImageIcon("picture\\ramen.jpg");
+		JLabel imagelable = new JLabel(image);
+		imagelable.setBounds(204, 230, 384, 270);
+		contentPane.add(imagelable);
 		
 		setVisible(true);
 	}

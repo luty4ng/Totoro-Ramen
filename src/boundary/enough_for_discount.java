@@ -15,6 +15,7 @@ import javax.swing.border.EmptyBorder;
 import entity.Member;
 import entity.Order;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 
 public class enough_for_discount extends JFrame {
@@ -67,10 +68,15 @@ public class enough_for_discount extends JFrame {
 		lblNotEnoughFor.setBounds(62, 123, 660, 35);
 		contentPane.add(lblNotEnoughFor);
 		
+		ImageIcon image1 =new ImageIcon("picture\\enough2.png");
+		JLabel imagelable1 = new JLabel(image1);
+		imagelable1.setBounds(315, 150, 150, 150);
+		contentPane.add(imagelable1);
+		
 		JLabel lblYouHaveX = new JLabel("You have "+stampNum+" virtual stamps.");
 		lblYouHaveX.setHorizontalAlignment(SwingConstants.CENTER);
 		lblYouHaveX.setFont(new Font("Times New Roman", Font.PLAIN, 36));
-		lblYouHaveX.setBounds(62, 279, 660, 35);
+		lblYouHaveX.setBounds(62, 290, 660, 35);
 		contentPane.add(lblYouHaveX);
 		
 		JLabel lblPlease = new JLabel("It will consume 10 stamps for a discount~");
