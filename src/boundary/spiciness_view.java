@@ -19,7 +19,7 @@ public class spiciness_view{
 	}
 
 	public void piechart() {
-		// 创建数据集对象
+
 		int sp0 = 0;
 		int sp1 = 0;
 		int sp2 = 0;
@@ -77,11 +77,11 @@ public class spiciness_view{
 
 				TextTitle textTitle = pieChart.getTitle(); // 标题设置
 
-				textTitle.setFont(new Font("宋体", Font.PLAIN, 20));
+				textTitle.setFont(new Font("Times New Roman", Font.PLAIN, 20));
 
 		 
 
-				pieChart.getLegend().setItemFont(new Font("宋体", Font.PLAIN, 12));//底部标签字体
+				pieChart.getLegend().setItemFont(new Font("Times New Roman", Font.PLAIN, 12));//底部标签字体
 
 		 
 

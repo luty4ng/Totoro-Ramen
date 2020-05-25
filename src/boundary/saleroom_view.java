@@ -13,7 +13,7 @@ import org.jfree.chart.plot.PlotOrientation;
 import org.jfree.chart.title.TextTitle;
 import org.jfree.data.category.DefaultCategoryDataset;
 
-//����һ��������ͳ��ͼ
+
 
 public class saleroom_view {
 
@@ -78,60 +78,59 @@ public class saleroom_view {
 		dataset.addValue(sunday, "sunday","week");
 		
 
-		// ����JFreeChart����
+
 
 		JFreeChart barChart =  ChartFactory.createBarChart3D(
 
-				"saleroom",//����
+				"saleroom",
 
-				"variety",     //x���ǩ
+				"variety",     
 
-				"quantity" ,    //y���ǩ
+				"quantity" ,    
 
-				dataset,    //���ݼ�
+				dataset,    
 
-				PlotOrientation.VERTICAL,//����Y��ķ���ֱ
+				PlotOrientation.VERTICAL,
 
-				true,       //��ʾͼ��
+				true,      
 
-				true,       //�����ɹ���
+				true,      
 
-				true        //����������
+				true        
 
 				);
 
 		
 
-		//������������
 
 		CategoryPlot barPlot = barChart.getCategoryPlot();
 
-		barChart.getLegend().setItemFont(new Font("����", Font.PLAIN, 12)); //�ײ���ǩ
+		barChart.getLegend().setItemFont(new Font("Times New Roman", Font.PLAIN, 12)); 
 
        
 
-		CategoryAxis domainAxis = barPlot.getDomainAxis(); //x���ǩ����
+		CategoryAxis domainAxis = barPlot.getDomainAxis(); 
 
 		 domainAxis.setTickLabelFont(new Font("sans-serif", Font.PLAIN, 11));  
 
-	     domainAxis.setLabelFont(new Font("����", Font.PLAIN, 12)); 
+	     domainAxis.setLabelFont(new Font("Times New Roman", Font.PLAIN, 12)); 
 
 	        
 
-        ValueAxis rAxis = barPlot.getRangeAxis();        //y���ǩ����
+        ValueAxis rAxis = barPlot.getRangeAxis();        
 
         rAxis.setTickLabelFont(new Font("sans-serif", Font.PLAIN, 12));  
 
-        rAxis.setLabelFont(new Font("����", Font.PLAIN, 12));  
+        rAxis.setLabelFont(new Font("Times New Roman", Font.PLAIN, 12));  
 
 		
 
-        TextTitle textTitle = barChart.getTitle();  //��ǩ����
+        TextTitle textTitle = barChart.getTitle();  
 
-        textTitle.setFont(new Font("����", Font.PLAIN, 20));  
+        textTitle.setFont(new Font("Times New Roman", Font.PLAIN, 20));  
 
         
-		//��swing����ʽ���ͼ��
+
 
 		ChartFrame barChartFrameframe = new ChartFrame("barChartFrame",barChart);
 
