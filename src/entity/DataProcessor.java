@@ -3,6 +3,10 @@ package entity;
 import java.io.*;
 import java.util.*;
 
+/*** This class is for data management and storage
+* @author Tingyang Lu
+* @version 0.5
+*/
 public class DataProcessor {
 	File csvFile;
 	BufferedReader csvReader;
@@ -10,8 +14,13 @@ public class DataProcessor {
 	Dictionary dict;
 	private String firstLine;
 	
-	//	Constructor: define which csv file you want to access
+
 	public DataProcessor(String fileName) {
+		/**
+	   * Constructor, define which csv file you want to access
+	   * @param fileName the filename and path you want to visit
+	   * @return none
+	   */
 		csvFile = new File(fileName);
 		boolean flag = !this.csvFile.exists();
 		if(!this.csvFile.exists())
@@ -21,7 +30,7 @@ public class DataProcessor {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
-		//System.out.println(csvFile.exists());
+
 		dict = new Hashtable();
 		try {
 			csvReader = new BufferedReader(new FileReader(csvFile));
@@ -45,9 +54,13 @@ public class DataProcessor {
 		}
 	}
 	
-	// Destructor: close reader & writer
+
 	public void finalize()
 	{
+		/**
+	   * Destructor, close reader & writer
+	   * @return none
+	   */
 		try {
 			csvReader.close();
 			csvWriter.close();
@@ -56,9 +69,13 @@ public class DataProcessor {
 		}
 	}
 	
-	// Read all the contents in target csv file
+
 	public ArrayList<String> Read()
 	{
+		/**
+	   * Read all the contents in target csv file
+	   * @return an arraylist that contains all csv file contents.
+	   */
 		String temp;
 		ArrayList<String> result = new ArrayList<String>();
 		int counter = 0;
@@ -76,8 +93,13 @@ public class DataProcessor {
 		return result;
 	}
 	
-	// Query the contents by Row&Colum
 	public  String Read(int row, int col){
+		/**
+	   * Query the contents by Row&Colum
+	   * @param row the row of target contents
+	   * @param col the colume of target contens
+	   * @return target csv contents in String
+	   */
         try {           
          String line = null;
          int index=0;
@@ -98,8 +120,13 @@ public class DataProcessor {
 			return "none";
   }
 	
-	// Query the contents by condition, e.g Read("Age=20")
+
 	public ArrayList<String> Read(String condition) {
+		/**
+	   * Query the contents by condition, e.g Read("Age=20")
+	   * @param condition condition syntax like "Age=20" or "name=Alice"
+	   * @return an arraylist that contains target content.
+	   */
 		String temp;
 		ArrayList<String> result = new ArrayList<String>();
 		Dictionary conditions = new Hashtable();
@@ -132,8 +159,13 @@ public class DataProcessor {
 	}
 
 
-	// Write your contents in csv file
+
 	public void Write(ArrayList<String> str) {
+		/**
+	   * Write your contents in csv file at one time
+	   * @param str your data in Arraylist format
+	   * @return none
+	   */
 		try {
 			csvWriter = new BufferedWriter(new FileWriter(csvFile));
 			csvWriter.write(firstLine);
@@ -150,6 +182,11 @@ public class DataProcessor {
 	}
 	
 	public void WriteLine(String str) {
+		/**
+	   * Add your contents in csv file 
+	   * @param str your data in string format
+	   * @return none
+	   */
 		try {
 			
 			csvWriter = new BufferedWriter(new FileWriter(csvFile, true));
@@ -161,19 +198,21 @@ public class DataProcessor {
 			e.printStackTrace();
 		}
 	}
-	// Check the mapping between index and attributes of csv first line
+
 	private void CheckDict()
 	{
+		/**
+	   * Show the mapping between index and attributes of csv first line
+	   * @return none
+	   */
+
 		for (Enumeration i = dict.keys(); i.hasMoreElements();)
             System.out.println("keys : " + i.nextElement());
 		for (Enumeration i = dict.elements(); i.hasMoreElements();)
             System.out.println("Values : " + i.nextElement());
-		
-		//System.out.println(dict.get("Email"));
-
 	}
 	
-	// just a test function write whatever u want:)
+
 	public String test() {
 		String[] a = "yes;".split(";");
 		String[] b = "yes".split(";");
@@ -184,7 +223,7 @@ public class DataProcessor {
 	
 	
 	public static void main(String[] args) {
-		// Usage Example
+
 		DataProcessor csv = new DataProcessor("data/test.csv");
 		csv.CheckDict();
 		//ArrayList<String> result = csv.Read();

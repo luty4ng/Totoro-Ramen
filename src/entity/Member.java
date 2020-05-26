@@ -4,6 +4,10 @@ import java.util.*;
 import java.util.regex.Matcher;  
 import java.util.regex.Pattern;
 
+/*** This class is member management and identification
+* @author Tingyang Lu
+* @version 0.5
+*/
 public class Member {
 	private String mID;
 	private String surName;
@@ -19,7 +23,11 @@ public class Member {
 	
 	public Member(String memberNumber)
 	{
-		//Load configuration & members data;
+		/**
+	   * Constructor, initialize csv data processor here
+	   * @param memberNumber Provide member ID.
+	   * @return none
+	   */
 		csvConfig = new DataProcessor("data/configure.csv");
 		csvMember = new DataProcessor("data/member.csv");
 		config = csvConfig.Read();
@@ -29,7 +37,10 @@ public class Member {
 	
 	public Member()
 	{
-		//Load configuration & members data;
+		/**
+	   * Constructor, initialize csv data processor with uncertain member ID
+	   * @return none
+	   */
 		csvConfig = new DataProcessor("data/configure.csv");
 		csvMember = new DataProcessor("data/member.csv");
 		config = csvConfig.Read();
@@ -37,15 +48,15 @@ public class Member {
 		
 	}
 	
-	public void test()
-	{
-		for(String i:data)
-			System.out.println(i);
-	}
-	
 	
 	private String idGenerator(int length)
 	{
+	     /**
+	   * generate random string id for identification
+	   * @param length the length of random id in number.
+	   * @return random id in String
+	   */
+
 	     String str="123456789";
 	     Random random=new Random();
 	     StringBuffer sb=new StringBuffer();
@@ -59,6 +70,12 @@ public class Member {
 	
 	private boolean checkFormat(String str, String type)
 	{
+		/**
+	   * check the format of input email or phone
+	   * @param str input string, can be email or phone number.
+	   * @param type the type of input string
+	   * @return true or false
+	   */
 		String pattern = "";
 		if(type == "email")
 			pattern = "^([a-z0-9A-Z]+[-|\\.]?)+[a-z0-9A-Z]@([a-z0-9A-Z]+(-[a-z0-9A-Z]+)?\\.)+[a-zA-Z]{2,}$"; 
@@ -72,6 +89,11 @@ public class Member {
 	
 	public boolean checkMember(String mid)
 	{
+		/**
+	   * check if a member is exist
+	   * @param mid member id
+	   * @return true or false
+	   */
 		for(String i:data) {
 			if(i.split(",")[0].equals(mid))
 				return true;
@@ -81,6 +103,11 @@ public class Member {
 	
 	public void addMember(String newdata)
 	{
+		/**
+	   * create a new member
+	   * @param newdata new member data in format like "****,****,****"
+	   * @return none
+	   */
 		data.add(newdata);
 		csvMember.Write(data);
 		for(String i:config)
@@ -93,6 +120,11 @@ public class Member {
 	
 	public void deleteMember(String mid)
 	{
+		/**
+	   * delete a member
+	   * @param mid the member id of delete target
+	   * @return none
+	   */
 		Iterator<String> d=data.iterator();
         while(d.hasNext()){
             String a=d.next();
@@ -115,6 +147,14 @@ public class Member {
 	
 	public String register(String surName,String firstName, String email, String phoneNum)
 	{
+		/**
+	   * Register a new VIP member account
+	   * @param surName surname of new member
+	   * @param firstName firstname of new member
+	   * @param email email address of new member
+	   * @param phoneNum phone number of new member
+	   * @return new member id that generated
+	   */
 		String mid = idGenerator(6);
 		if(!checkFormat(email,"email")) {
 			return "email";
@@ -135,6 +175,11 @@ public class Member {
 	
 	public boolean login(String mid)
 	{
+		/**
+	   * login in as VIP member
+	   * @param mid member id for VIP account
+	   * @return true (for success) or false (for fail)
+	   */
 		if(!checkMember(mid))
 			return false;
 		else
@@ -143,6 +188,11 @@ public class Member {
 	
 	public String getStamps(String mid)
 	{
+		/**
+	   * get the number of current VIP stamps
+	   * @param mid member id for VIP account
+	   * @return number of stamps in String
+	   */
 		for(String i:data)
 			if(i.split(",")[0].equals(mid))
 				return i.split(",")[5];
@@ -151,6 +201,11 @@ public class Member {
 	
 	public void useStamps(String mid)
 	{
+		/**
+	   * use a VIP stamp
+	   * @param mid member id for VIP account
+	   * @return none
+	   */
 		int count = 0;
 		for(String i:data)
 		{
@@ -168,6 +223,11 @@ public class Member {
 	}
 	public void addStamps(String mid)
 	{
+		/**
+	   * add a VIP stamp
+	   * @param mid member id for VIP account
+	   * @return none
+	   */
 		int count = 0;
 		for(String i:data)
 		{
