@@ -12,15 +12,19 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JButton;
 import javax.swing.JRadioButton;
-
+/*** This class is data visualization
+* @author Yujun Jin
+* @version 0.5
+*/
 public class view extends JFrame {
 
 	private JPanel contentPane;
 
-	/**
-	 * Launch the application.
-	 */
 	public static void main(String[] args) {
+		/**
+		 * Launch the application.
+		 * @return none
+		 */
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -33,10 +37,12 @@ public class view extends JFrame {
 		});
 	}
 
-	/**
-	 * Create the frame.
-	 */
+	
 	public view() {
+		/**
+		 * Create the frame.
+		 * @return none
+		 */
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(740, 200, 800, 740);
 		contentPane = new JPanel();

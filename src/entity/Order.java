@@ -6,7 +6,10 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Random;
-
+/*** This class about order management
+* @author Yixuan Lu
+* @version 0.5
+*/
 public class Order {
 	private String oID;
 	private Date orderTime;
@@ -18,13 +21,18 @@ public class Order {
 	private ArrayList<NoodleOrder> noodleOrder;
 	
 	public Order(Date orderTime) {
+		/**
+		   * Constructor, initialize order class, build a new order
+		   * @param Date object to record time.
+		   * @return none
+		   */
 		DataProcessor processor = new DataProcessor("data/configure.csv");
 		noodleOrder = new ArrayList<NoodleOrder>();
 		String[] currentOID = processor.Read().get(0).split(",");
 		int inputID = Integer.parseInt(currentOID[0]);
 		Calendar cal = Calendar.getInstance(); 
 		cal.setTime(orderTime);
-		int weekday = cal.get(cal.DAY_OF_WEEK);
+		int weekday = cal.get(cal.DAY_OF_WEEK)-1;
 		
 		this.oID = "" + weekday; //the day of the week.
 		for(int i=0;i<(5-currentOID[0].length());i++)
@@ -37,7 +45,13 @@ public class Order {
 		this.totalPrice = 0.0;
 	}
 
+
 	public void orderFinish() {
+	     /**
+	   * Run when the order is finish, store the order data in csv files
+	   * @param null
+	   * @return null
+	   */
 		DataProcessor processor = new DataProcessor("data/configure.csv");
 		String[] currentOID = processor.Read().get(0).split(",");
 		int inputID = Integer.parseInt(currentOID[0]);
@@ -62,6 +76,11 @@ public class Order {
 	}
 
 	public double getTotalPrice() {
+		  /**
+		   * calculate all the noodle orders price and sum them up to the total price
+		   * @param null
+		   * @return double return the total price of the whole order
+		   */
 		double price = 0;
 		for(int i=0;i<noodleOrder.size();i++)
 			price += noodleOrder.get(i).getPrice();
@@ -69,9 +88,6 @@ public class Order {
 		return this.totalPrice;
 	}
 	
-//	public double getTotalPriceDirectly() {
-//		return this.totalPrice;
-//	}
 
 	public Member getMember() {
 		return member;
@@ -82,6 +98,11 @@ public class Order {
 	}
 	
 	public boolean setMember(String memberNumber) {
+		/**
+		   * generate a member object
+		   * @param String type which represent the member number
+		   * @return if generate successfully 
+		   */
 		this.member = new Member(memberNumber);
 		if(this.member == null)
 			return false;
@@ -90,10 +111,20 @@ public class Order {
 	}
 	//add new sub order
 	public void addNoodleOrder(NoodleOrder nOrder) {
+		/**
+		   * add a sub order to the order
+		   * @param NoodleOrder object
+		   * @return null
+		   */
 		this.noodleOrder.add(nOrder);
 	}
 	
 	public String[][] getOrderDetail(){
+		/**
+		   * Get the whole order detail for print
+		   * @param null
+		   * @return String 2-dimension array
+		   */
 		String [][] detail = new String[noodleOrder.size()*5][3];
 		int n = 0;
 		for(int i=0;i<noodleOrder.size()*5;){
@@ -115,6 +146,11 @@ public class Order {
 	}
 	
 	public boolean printOrder() {
+		/**
+		   * generate the ticket
+		   * @param null
+		   * @return if the print is successful. return true.
+		   */
 		DataProcessor processor = new DataProcessor("data/orderForCustomer/" + this.oID + ".txt");
 		ArrayList<String> outputOrder = new ArrayList<String>();
 		outputOrder.add("**************************************************");
@@ -136,12 +172,17 @@ public class Order {
 	
 	
 	public void outPutOrder() {
+		/**
+		   * Write the order into Order.csv for statistic
+		   * @param null
+		   * @return String 2-dimension array
+		   */
 		DataProcessor processor = new DataProcessor("data/order.csv");
 		Calendar cal = Calendar.getInstance(); 
 		cal.setTime(orderTime);
-		int weekday = cal.get(cal.DAY_OF_WEEK);
+		int weekday = cal.get(cal.DAY_OF_WEEK)-1;
 		ArrayList<String> outputOrder = new ArrayList<String>();
-		outputOrder.add(String.join(",", new String[]{oID,String.valueOf(cal.get(cal.DAY_OF_WEEK)), diningOption, String.valueOf(totalPrice),String.valueOf(noodleOrder.size())}));
+		outputOrder.add(String.join(",", new String[]{oID,String.valueOf(weekday), diningOption, String.valueOf(totalPrice),String.valueOf(noodleOrder.size())}));
 		for(NoodleOrder i:noodleOrder) 
 			outputOrder.add(i.toString());
 		for(String i:outputOrder)
@@ -149,7 +190,11 @@ public class Order {
 	}
 	
 	public void discount() {
-		
+		/**
+		   * Make the highest price noodle order free. Achieve discount function
+		   * @param null
+		   * @return null
+		   */
 		double max = 0;
 		int index = 0;
 		for(int i=0;i<noodleOrder.size();i++) {

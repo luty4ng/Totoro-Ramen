@@ -15,16 +15,25 @@ import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
 import boundary.backstage;
+import control.MainFunction;
 import entity.Order;
 
 import javax.swing.JLabel;
 
+/**
+ * Functions: 
+ * 1. as the first interface, welcome the users.
+ * 2. the user can choose "customer" or "manager" as his or her identity.
+ * 3. if the user is a customer, record the time when he click this button.
+ */
 public class welcome extends JFrame {
 
 	private JPanel contentPane;
 
 	/**
 	 * Launch the application.
+	 * @param nothing.
+	 * @return nothing.
 	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -41,6 +50,8 @@ public class welcome extends JFrame {
 
 	/**
 	 * Create the frame.
+	 * @param nothing.
+	 * @return nothing.
 	 */
 	public welcome() {
 //		Date orderTime;
@@ -80,11 +91,8 @@ public class welcome extends JFrame {
 		btnCustomer.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(e.getSource() == btnCustomer) {
-					Date orderTime = new Date();
-//					System.out.print(orderTime);
-					Order order = new Order(orderTime);
 					setVisible(false);
-					JFrame order_ramen= new order_ramen(order);
+					JFrame order_ramen= new order_ramen(MainFunction.generateOrder());
 				}
 			}
 		});

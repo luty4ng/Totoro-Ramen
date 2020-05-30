@@ -23,28 +23,20 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import javax.swing.JCheckBox;
 
+/**
+ * Functions: 
+ * 	1. show all ramen orders and prices in details in a table.
+ * 	2. calculate and present the discount and total price.
+ * 	3. the user can confirm and the order after browsing the detials then choose payment method.
+ */
 public class pay_ment_interface extends JFrame {
-	//继续调用getOrderDetailed方法，并且展示订单。最终结束
 	private JPanel contentPane;
-	private Order order;
-	/**
-	 * Launch the application.
-	 */
-/*	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					pay_ment_interface frame = new pay_ment_interface();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-*/
+	private Order order; 
+	
 	/**
 	 * Create the frame.
+	 * @param order The order of this customer.
+	 * @param totalprice The total price of this order.
 	 */
 	public pay_ment_interface(Order order, double totalprice) {
 		this.order = order;
@@ -76,10 +68,6 @@ public class pay_ment_interface extends JFrame {
         jTable.setFont(new Font("Times New Roman", Font.PLAIN, 15));
         jTable.setRowHeight(25);
         scrollPane.setViewportView(jTable);
-        
-/*        JTable jTable=new JTable(data,columnName);
-        jTable.setRowHeight(25);
-        scrollPane.setViewportView(jTable);*/
         
         JButton btnNewButton = new JButton("pay by bank card");
         btnNewButton.addMouseListener(new MouseAdapter() {
@@ -122,7 +110,7 @@ public class pay_ment_interface extends JFrame {
         if(order.getMember() != null) {
 	        needPay = order.getTotalPrice();
 	        discountValue = totalprice - needPay; //the total discount of the order 
-        }        
+        }          
         JLabel total = new JLabel("in total:");
         total.setFont(new Font("Times New Roman", Font.BOLD, 20));
         total.setBounds(10, 9, 106, 27);

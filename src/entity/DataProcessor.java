@@ -3,6 +3,9 @@ package entity;
 import java.io.*;
 import java.util.*;
 
+import org.jfree.chart.ChartUtilities;
+import org.jfree.chart.JFreeChart;
+
 /*** This class is for data management and storage
 * @author Tingyang Lu
 * @version 0.5
@@ -13,7 +16,7 @@ public class DataProcessor {
 	BufferedWriter csvWriter;
 	Dictionary dict;
 	private String firstLine;
-	
+	 
 
 	public DataProcessor(String fileName) {
 		/**
@@ -220,7 +223,31 @@ public class DataProcessor {
 		System.out.println(b[0]);
 		return "Create Success";
 	}
-	
+	public static void saveAsFile(JFreeChart chart, String outputPath,int weight, int height) {      
+
+        FileOutputStream out = null;      
+        try {      
+            File outFile = new File(outputPath);      
+            if (!outFile.exists()) {      
+                outFile.createNewFile();
+            }      
+            out = new FileOutputStream(outputPath);           
+            ChartUtilities.writeChartAsPNG(out, chart, weight, height);      
+    
+            out.flush();      
+        } catch (FileNotFoundException e) {      
+            e.printStackTrace();      
+        } catch (IOException e) {      
+            e.printStackTrace();      
+        } finally {      
+            if (out != null) {      
+                try {       
+                    out.close();       
+                } catch (IOException e) {       
+                }      
+            }      
+        }      
+    } 
 	
 	public static void main(String[] args) {
 

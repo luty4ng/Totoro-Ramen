@@ -1,5 +1,6 @@
 package boundary;
 
+
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
 import java.awt.Font;
@@ -13,14 +14,19 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.JButton;
 import javax.swing.JRadioButton;
 
+/*** This class is data visualization
+* @author Yujun Jin
+* @version 0.5
+*/
 public class view_states extends JFrame {
 
 	private JPanel contentPane;
-
-	/**
-	 * Launch the application.
-	 */
+	public static boolean hasWeek;
 	public static void main(String[] args) {
+		/**
+		* Launch the application.
+		* @return none
+		*/
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -33,10 +39,13 @@ public class view_states extends JFrame {
 		});
 	}
 
-	/**
-	 * Create the frame.
-	 */
+	
 	public view_states() {
+		/**
+		* Create the frame.
+		* @return none
+		*/
+		hasWeek = false;
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(740, 200, 800, 740);
 		contentPane = new JPanel();
@@ -89,6 +98,11 @@ public class view_states extends JFrame {
 		});
 		
 		JRadioButton rdbtnNewRadioButton = new JRadioButton("weekly report generation");
+		rdbtnNewRadioButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				hasWeek = !hasWeek;
+			}
+		});
 		rdbtnNewRadioButton.setFont(new Font("Times New Roman", Font.PLAIN, 30));
 		rdbtnNewRadioButton.setBounds(200, 475, 400, 40);
 		contentPane.add(rdbtnNewRadioButton);

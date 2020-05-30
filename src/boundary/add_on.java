@@ -26,12 +26,18 @@ import javax.swing.JButton;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
+/**
+ * Functions: 
+ * 1. show different prices of different add-ons.
+ * 2. the user can order some add-ons for the ramen he order in last interface by clicking some buttons.
+ * 3. return back to last interface to choose the ramen again.
+ *
+ */
 public class add_on extends JFrame {
 
 	private JPanel contentPane;
 	private NoodleOrder noodle;
 	private Order order;
-//	private Add_on_numbers numbers = new Add_on_numbers();
 	private int number1 = 0;
 	private int number2 = 0;
 	private int number3 = 0;
@@ -45,27 +51,11 @@ public class add_on extends JFrame {
     private String nori = "Yes";
     private String chashu = "Yes";
     private String boiledEgg = "Yes";
-	/**
-	 * Launch the application.
-	 */
-//	public static void main(String[] args) {
-//		EventQueue.invokeLater(new Runnable() {
-//			public void run() {
-//				try {
-//					NoodleOrder noodle = null;
-//					add_on frame = new add_on(noodle);
-//					Add_on_numbers numbers = new Add_on_numbers();
-//					frame.setVisible(true);
-//				} catch (Exception e) {
-//					e.printStackTrace();
-//				}
-//			}
-//		});
-//	}
 
 	/**
 	 * Create the frame.
-	 * @param noodle 
+	 * @param order The order of this customer.
+	 * @param noodle The bowl of noodles where add on are added to.
 	 */
 	public add_on(Order order, NoodleOrder noodle) {
 		this.noodle = noodle;
@@ -157,8 +147,6 @@ public class add_on extends JFrame {
 		label_3.setFont(new Font("Times New Roman", Font.PLAIN, 26));
 		label_3.setBounds(270, 344, 150, 26);
 		panel.add(label_3);
-		
-//		Add_on_numbers numbers = new Add_on_numbers(); // variable numbers record the changes of numbers of add_on
 		
 		JTextArea textArea1 = new JTextArea();     // Extra Nori
 		textArea1.setFont(new Font("Times New Roman", Font.PLAIN, 26));

@@ -15,28 +15,19 @@ import javax.swing.border.EmptyBorder;
 
 import entity.Order;
 
+/**
+ * Functions: 
+ * 1. the user can whether to register as a VIP member.
+ * 2. if skip loyalty scheme, the customer can pay directly.
+ */
 public class whether_register extends JFrame {
 
 	private JPanel contentPane;
 	private Order order;
-	/**
-	 * Launch the application.
-	 */
-/*	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					whether_register frame = new whether_register();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-*/
+
 	/**
 	 * Create the frame.
+	 * @param order The order of this customer.
 	 */
 	public whether_register(Order order) {
 		this.order = order;

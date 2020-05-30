@@ -12,9 +12,14 @@ import org.jfree.chart.plot.CategoryPlot;
 import org.jfree.chart.plot.PlotOrientation;
 import org.jfree.chart.title.TextTitle;
 import org.jfree.data.category.DefaultCategoryDataset;
+import org.jfree.data.category.CategoryDataset;
+import entity.DataProcessor;
 
 
-
+/*** This class is data visualization
+* @author Yujun Jin
+* @version 0.5
+*/
 public class saleroom_view {
 
 	public static void main(String[] args){
@@ -22,9 +27,10 @@ public class saleroom_view {
 		bar.Bar();
 	}
 
-	/*
-	 * create a chart
-	 */
+    /**
+     * create chart
+     * @return none
+     */
 	public void Bar() {
 		
 		entity.DataProcessor user = new entity.DataProcessor("data/order.csv");
@@ -79,7 +85,6 @@ public class saleroom_view {
 		
 
 
-
 		JFreeChart barChart =  ChartFactory.createBarChart3D(
 
 				"saleroom",
@@ -88,13 +93,12 @@ public class saleroom_view {
 
 				"quantity" ,    
 
-				dataset,    
+				dataset,  
 
 				PlotOrientation.VERTICAL,
 
-				true,      
-
-				true,      
+				true,       
+				true,       
 
 				true        
 
@@ -102,6 +106,7 @@ public class saleroom_view {
 
 		
 
+		
 
 		CategoryPlot barPlot = barChart.getCategoryPlot();
 
@@ -125,18 +130,21 @@ public class saleroom_view {
 
 		
 
-        TextTitle textTitle = barChart.getTitle();  
+        TextTitle textTitle = barChart.getTitle(); 
 
         textTitle.setFont(new Font("Times New Roman", Font.PLAIN, 20));  
 
         
-
+		
 
 		ChartFrame barChartFrameframe = new ChartFrame("barChartFrame",barChart);
 
 		barChartFrameframe.pack();
 
 		barChartFrameframe.setVisible(true);
+		 if(view_states.hasWeek) {
+			 DataProcessor.saveAsFile(barChart, "data/weeklyReport/salesroomChart.png", 800, 800); 
+		 }
 
 	}
 

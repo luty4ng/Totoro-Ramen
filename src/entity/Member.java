@@ -13,7 +13,7 @@ public class Member {
 	private String surName;
 	private String firstName;
 	private String email;
-	private String phoneNum;
+	private String phoneNum; 
 	private int virtualStamps;
 	
 	private ArrayList<String> data;

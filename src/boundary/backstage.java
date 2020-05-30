@@ -12,10 +12,14 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+/**
+* this class shows backstage menu for ramen boss
+* @author  group102
+*/
+
 public class backstage extends JFrame {
 
 	private JPanel contentPane;
-
 	/**
 	 * Launch the application.
 	 */
@@ -33,7 +37,8 @@ public class backstage extends JFrame {
 	}
 
 	/**
-	 * Create the frame.
+	 * this class creates the frame.
+	 * @return null
 	 */
 	public backstage() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

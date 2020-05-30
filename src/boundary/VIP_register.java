@@ -24,6 +24,12 @@ import entity.Order;
 import javax.swing.SwingConstants;
 import javax.swing.JTextField;
 
+/**
+ * Functions: 
+ * 	1. the user can register as a VIP member.
+ *  2. if the entered message for registering is invalid, there will be corresponding warnings.
+ *  3. if register successfully, he or she can see the new VIP number and login directly.
+ */
 public class VIP_register extends JFrame {
 
 	private JPanel contentPane;
@@ -38,24 +44,10 @@ public class VIP_register extends JFrame {
 	private Order order;
 	private Member member;
 	private String newID;
-	/**
-	 * Launch the application.
-	 */
-/*	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					VIP_register frame = new VIP_register();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-*/
+
 	/**
 	 * Create the frame.
+	 * @param order The order of this customer.
 	 */
 	public VIP_register(Order order) {
 		this.order = order;

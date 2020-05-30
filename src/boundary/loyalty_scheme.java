@@ -16,29 +16,18 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
+/**
+ * Functions: 
+ * 1. ask the customer whether he or she is a VIP member.
+ */
 public class loyalty_scheme extends JFrame {
 
 	private JPanel contentPane;
 	private Order order;
-
-	/**
-	 * Launch the application.
-	 */
-/*	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public  run() {
-				try {
-					loyalty_scheme frame = new loyalty_scheme();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-*/
+	
 	/**
 	 * Create the frame.
+	 * @param order The order of this customer.
 	 */
 	public loyalty_scheme(Order order) {
 		this.order = order;

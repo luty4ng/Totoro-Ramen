@@ -1,9 +1,10 @@
 package boundary;
 
 import java.awt.Color;
+
 import java.util.ArrayList;
 
-import org.jfree.chart.ChartFactory;
+import org.jfree.chart.*;
 
 import org.jfree.chart.ChartFrame;
 
@@ -13,10 +14,15 @@ import org.jfree.chart.plot.CategoryPlot;
 
 import org.jfree.chart.plot.PlotOrientation;
 
-import org.jfree.data.category.CategoryDataset;
-
 import org.jfree.data.category.DefaultCategoryDataset;
 
+import entity.DataProcessor;
+
+import org.jfree.data.category.CategoryDataset;
+/*** This class is data visualization
+* @author Yujun Jin
+* @version 0.5
+*/
 public class sale_valume{
 
     public static void main(String[] args) {
@@ -26,11 +32,12 @@ public class sale_valume{
     }
 
     public  void GetDataset()
-
+    /**
+     * create frame
+     * @return none
+     */
     {
-
-        DefaultCategoryDataset mDataset = new DefaultCategoryDataset();
-        
+    	DefaultCategoryDataset mDataset = new DefaultCategoryDataset();
         entity.DataProcessor user = new entity.DataProcessor("data/order.csv");
         ArrayList<String> number1 = user.Read();
         double monday = 0;
@@ -79,21 +86,21 @@ public class sale_valume{
 
         JFreeChart mChart = ChartFactory.createLineChart(
 
-                "sale volume",//图名字
+                "sale volume",
 
-                "day",//横坐标
+                "day",
 
-                "number",//纵坐标
+                "number",
 
-                mDataset,//数据集
+                mDataset,
 
                 PlotOrientation.VERTICAL,
 
-                true, // 显示图例
+                true, 
 
-                true, // 采用标准生成器
+                true, 
 
-                false);// 是否生成超链接
+                false);
 
  
 
@@ -101,9 +108,9 @@ public class sale_valume{
 
         mPlot.setBackgroundPaint(Color.LIGHT_GRAY);
 
-        mPlot.setRangeGridlinePaint(Color.BLUE);//背景底部横虚线
+        mPlot.setRangeGridlinePaint(Color.BLUE);
 
-        mPlot.setOutlinePaint(Color.RED);//边界线
+        mPlot.setOutlinePaint(Color.RED);
 
  
 
@@ -112,6 +119,9 @@ public class sale_valume{
         mChartFrame.pack();
 
         mChartFrame.setVisible(true);
+		 if(view_states.hasWeek) {
+			 DataProcessor.saveAsFile(mChart, "data/weeklyReport/salesvalumeChart.png", 800, 800); 
+		 }
 
     }
 

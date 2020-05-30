@@ -8,7 +8,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import entity.MQDocument;
+import control.MQDocument;
 import entity.Order;
 import entity.OrderMenu;
 
@@ -25,7 +25,10 @@ import javax.swing.JTextField;
 import javax.swing.JRadioButton;
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
-
+/**
+* this class shows the interface of modifying menu.
+* @author  group102
+*/
 public class modify_menu extends JFrame {
 
 	private JPanel contentPane;
@@ -67,7 +70,8 @@ public class modify_menu extends JFrame {
 	}
 
 	/**
-	 * Create the frame.
+	 * this method creates the frame of modifying menu.
+	 * @return nothing
 	 */
 	public modify_menu() {
 		this.ordermenu = new OrderMenu();

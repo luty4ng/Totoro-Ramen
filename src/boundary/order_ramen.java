@@ -33,7 +33,10 @@ import java.awt.event.MouseEvent;
 import javax.swing.event.ChangeListener;
 import javax.swing.event.ChangeEvent;
 
-
+/**
+ * Functions: 
+ * 1. the user can order a bowl of ramen by clicking some buttons.
+ */
 public class order_ramen extends JFrame implements ItemListener {
 
 	private JPanel contentPane;
@@ -49,28 +52,13 @@ public class order_ramen extends JFrame implements ItemListener {
     private int spiciness = 0;
     private int n;
     private OrderMenu ordermenu;
-	/**
-	 * Launch the application.
-	 */
-//	public static void main(String[] args) {
-//		EventQueue.invokeLater(new Runnable() {
-//			public void run() {
-//				try {
-//					order_ramen frame = new order_ramen();
-//					frame.setVisible(true);
-//				} catch (Exception e) {
-//					e.printStackTrace();
-//				}
-//			}
-//		});
-//	}
 
 	/**
 	 * Create the frame.
+	 * 
+	 * @param order The order of this customer.
 	 */
 	public order_ramen(Order order) { 
-
-		
 	    this.order = order;
 	    this.id = order.getoID();
 	    this.ordermenu = new OrderMenu();
@@ -271,15 +259,7 @@ public class order_ramen extends JFrame implements ItemListener {
 				nori = "Yes";
 			}
 		});
-		
-		/*rdbtnYes.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				if(e.getSource() == rdbtnYes) {
-					nori = "Yes";
-				}
-			}
-		});*/
+		 
 		rdbtnYes.setFont(new Font("Times New Roman", Font.PLAIN, 21));
 		rdbtnYes.setBounds(150, 234, 93, 27);
 		group4.add(rdbtnYes);
@@ -293,15 +273,6 @@ public class order_ramen extends JFrame implements ItemListener {
 			}
 		});
 		
-		/*JRadioButton rdbtnNo = new JRadioButton("No");
-		rdbtnNo.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				if(e.getSource() == rdbtnNo) {
-					nori = "No";
-				}
-			}
-		});*/
 		rdbtnNo.setFont(new Font("Times New Roman", Font.PLAIN, 21));
 		rdbtnNo.setBounds(350, 234, 77, 27);
 		group4.add(rdbtnNo);
@@ -328,14 +299,6 @@ public class order_ramen extends JFrame implements ItemListener {
 				chashu = "Yes";
 			}
 		});
-		/*rdbtnYes_2.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				if(e.getSource() == rdbtnYes_2) {
-					chashu = "Yes";
-				}
-			}
-		});*/
 		
 		rdbtnYes_2.setFont(new Font("Times New Roman", Font.PLAIN, 21));
 		rdbtnYes_2.setBounds(150, 299, 77, 27);
@@ -349,14 +312,7 @@ public class order_ramen extends JFrame implements ItemListener {
 				chashu = "No";
 			}
 		});
-		/*rdbtnNo_1.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				if(e.getSource() == rdbtnNo_1) {
-					chashu = "No";
-				}
-			}
-		});*/
+		
 		rdbtnNo_1.setFont(new Font("Times New Roman", Font.PLAIN, 21));
 		rdbtnNo_1.setBounds(350, 299, 58, 27);
 		group5.add(rdbtnNo_1);
@@ -382,14 +338,7 @@ public class order_ramen extends JFrame implements ItemListener {
 				boiledEgg = "Yes";
 			}
 		});
-		/*rdbtnYes_1.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				if(e.getSource() == rdbtnYes_1) {
-					boiledEgg = "Yes";
-				}
-			}
-		});*/
+		
 		rdbtnYes_1.setFont(new Font("Times New Roman", Font.PLAIN, 21));
 		rdbtnYes_1.setBounds(150, 364, 66, 27);
 		group6.add(rdbtnYes_1);
@@ -403,14 +352,7 @@ public class order_ramen extends JFrame implements ItemListener {
 				boiledEgg= "No";
 			}
 		});
-		/*rdbtnNo_2.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				if(e.getSource() == rdbtnNo_2) {
-					boiledEgg = "No";
-				}
-			}
-		});*/
+		
 		rdbtnNo_2.setFont(new Font("Times New Roman", Font.PLAIN, 21));
 		rdbtnNo_2.setBounds(350, 364, 58, 27);
 		group6.add(rdbtnNo_2);

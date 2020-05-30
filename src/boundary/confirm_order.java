@@ -24,6 +24,16 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import javax.swing.JCheckBox;
 
+/**
+ * Functions: 
+ * 1. show all ramen orders and prices in details in a table.
+ * 2. choose another bowl of ramen as well as its add-ons.
+ * 3. calculate and present the total price.
+ * 4. the user can confirm and submit the order after browsing the detials.
+ * 
+ * @author Wenlong Liu
+ *
+ */
 public class confirm_order extends JFrame {
 
 	private JPanel contentPane;
@@ -34,25 +44,10 @@ public class confirm_order extends JFrame {
 	private int restNum4 = 0;
 	private OrderMenu ordermenu;
 	private String[][] detail;
-	/**
-	 * Launch the application.
-	 */
-//	public static void main(String[] args) {
-//		EventQueue.invokeLater(new Runnable() {
-//			public void run() {
-//				try {
-//					confirm_order frame = new confirm_order();
-//					frame.setVisible(true);
-//				} catch (Exception e) {
-//					e.printStackTrace();
-//				}
-//			}
-//		});
-//	}
 
 	/**
 	 * Create the frame.
-	 * @param noodle 
+	 * @param order The order of this customer.
 	 */
 	public confirm_order(Order order) {
 		this.order = order;

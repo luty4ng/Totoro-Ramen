@@ -13,7 +13,10 @@ import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
-
+/**
+* this class shows the deal_complete interface 
+* @author  group102
+*/
 public class deal_complete extends JFrame {
 
 	private JPanel contentPane;
@@ -35,7 +38,8 @@ public class deal_complete extends JFrame {
 	}
 
 	/**
-	 * Create the frame.
+	 * this method creates the frame of deal_complete.
+	 * @return nothing
 	 */
 	public deal_complete() {
 		setTitle("Deal complete");

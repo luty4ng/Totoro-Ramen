@@ -10,7 +10,13 @@ import org.jfree.chart.labels.StandardPieSectionLabelGenerator;
 import org.jfree.chart.plot.PiePlot;
 import org.jfree.chart.title.TextTitle;
 import org.jfree.data.general.DefaultPieDataset;
+import org.jfree.data.category.CategoryDataset;
+import entity.DataProcessor;
 
+/*** This class is data visualization
+* @author Yujun Jin
+* @version 0.5
+*/
 public class spiciness_view{
 
 	public static void main(String[] args) {
@@ -19,7 +25,11 @@ public class spiciness_view{
 	}
 
 	public void piechart() {
-
+		/**
+		 * create frame
+		 * @return none
+		 */
+		
 		int sp0 = 0;
 		int sp1 = 0;
 		int sp2 = 0;
@@ -49,7 +59,6 @@ public class spiciness_view{
 							}
 						}
 				}
-		 
 				DefaultPieDataset dataset = new DefaultPieDataset();
 
 				dataset.setValue("spiciness 0", sp0);
@@ -59,39 +68,38 @@ public class spiciness_view{
 				dataset.setValue("spiciness 4", sp4);
 				dataset.setValue("spiciness 5", sp5);
 
-				// 创建JFreeChart对象
+			
 
-				JFreeChart pieChart = ChartFactory.createPieChart("spiciness survey", // 标题
+				JFreeChart pieChart = ChartFactory.createPieChart("spiciness survey", 
 
-						dataset, // 数据集
+						dataset, 
 
 						true, true, true);
 
 		 
 
-				// 设置字体属性
 
-				PiePlot pieplot = (PiePlot) pieChart.getPlot(); // 通过JFreeChart对象获得plot
+				PiePlot pieplot = (PiePlot) pieChart.getPlot(); 
 
 		 
 
-				TextTitle textTitle = pieChart.getTitle(); // 标题设置
+				TextTitle textTitle = pieChart.getTitle(); 
 
 				textTitle.setFont(new Font("Times New Roman", Font.PLAIN, 20));
 
 		 
 
-				pieChart.getLegend().setItemFont(new Font("Times New Roman", Font.PLAIN, 12));//底部标签字体
+				pieChart.getLegend().setItemFont(new Font("Times New Roman", Font.PLAIN, 12));
 
 		 
 
-				StandardPieSectionLabelGenerator sp = new StandardPieSectionLabelGenerator("{2}");//{1}表示显示数值， {2}表示显示百分比
+				StandardPieSectionLabelGenerator sp = new StandardPieSectionLabelGenerator("{2}");
 
-				pieplot.setLabelGenerator(sp);// 设置百分比
+				pieplot.setLabelGenerator(sp);
 
 		 
 
-				// 以swing的形式输出图表
+				
 
 				ChartFrame pieChartFrame = new ChartFrame("peiFrame", pieChart);
 
@@ -99,7 +107,9 @@ public class spiciness_view{
 
 				pieChartFrame.pack();
 
-		 
+		 if(view_states.hasWeek) {
+			 DataProcessor.saveAsFile(pieChart, "data/weeklyReport/spicinessChart.png", 800, 800); 
+		 }
 	}
 
 }

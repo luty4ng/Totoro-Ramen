@@ -21,29 +21,21 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
+/**
+ * Functions: 
+ * 	1. present the number of stamps of the VIP customer.
+ * 	2. remind the VIP customer that he or she can not pay with a discount.
+ */
 public class less_than_10 extends JFrame {
 
 	private JPanel contentPane;
     private Order order;
     private Member member;
-	/**
-	 * Launch the application.
-	 */
-/*	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					less_than_10 frame = new less_than_10();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-*/
+    
 	/**
 	 * Create the frame.
+	 * @param order The order of this customer.
+	 * @param memberNumber The number of this member.
 	 */
 	public less_than_10(Order order, String memberNumber) {
 		this.order = order;

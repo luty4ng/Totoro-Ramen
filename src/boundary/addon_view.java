@@ -3,6 +3,7 @@ package boundary;
 import java.awt.Font;
 import java.util.ArrayList;
 
+import org.jfree.data.category.CategoryDataset;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartFrame;
 import org.jfree.chart.JFreeChart;
@@ -13,8 +14,14 @@ import org.jfree.chart.plot.PlotOrientation;
 import org.jfree.chart.title.TextTitle;
 import org.jfree.data.category.DefaultCategoryDataset;
 
-//创建一个条形容统计图
+import control.MainFunction;
+import entity.DataProcessor;
 
+
+/*** This class is data visualization
+* @author Yujun Jin
+* @version 0.5
+*/
 public class addon_view {
 
 	public static void main(String[] args){
@@ -56,66 +63,67 @@ public class addon_view {
 		dataset.addValue(extraChashu, "extraChashu","extra");
 		
 
-		// 创建JFreeChart对象
+		
 
 		JFreeChart barChart =  ChartFactory.createBarChart3D(
 
-				"add-ones",//标题
+				"add-ones",
 
-				"variety",     //x轴标签
+				"variety",    
 
-				"quantity" ,    //y轴标签
+				"quantity" ,   
 
-				dataset,    //数据集
+				dataset,    
 
-				PlotOrientation.VERTICAL,//设置Y轴的方向垂直
+				PlotOrientation.VERTICAL,
+				true,       
 
-				true,       //显示图例
+				true,       
 
-				true,       //不生成工具
-
-				true        //不生成连接
-
+				true        
 				);
 
 		
 
-		//设置字体属性
+		
 
 		CategoryPlot barPlot = barChart.getCategoryPlot();
 
-		barChart.getLegend().setItemFont(new Font("宋体", Font.PLAIN, 12)); //底部标签
+		barChart.getLegend().setItemFont(new Font("Times New Roman", Font.PLAIN, 12)); 
 
        
 
-		CategoryAxis domainAxis = barPlot.getDomainAxis(); //x轴标签设置
+		CategoryAxis domainAxis = barPlot.getDomainAxis(); 
 
 		 domainAxis.setTickLabelFont(new Font("sans-serif", Font.PLAIN, 11));  
 
-	     domainAxis.setLabelFont(new Font("宋体", Font.PLAIN, 12)); 
+	     domainAxis.setLabelFont(new Font("Times New Roman", Font.PLAIN, 12)); 
 
 	        
 
-        ValueAxis rAxis = barPlot.getRangeAxis();        //y轴标签设置
+        ValueAxis rAxis = barPlot.getRangeAxis();        
 
         rAxis.setTickLabelFont(new Font("sans-serif", Font.PLAIN, 12));  
 
-        rAxis.setLabelFont(new Font("宋体", Font.PLAIN, 12));  
+        rAxis.setLabelFont(new Font("Times New Roman", Font.PLAIN, 12));  
 
 		
 
-        TextTitle textTitle = barChart.getTitle();  //标签设置
+        TextTitle textTitle = barChart.getTitle();  
 
-        textTitle.setFont(new Font("宋体", Font.PLAIN, 20));  
+        textTitle.setFont(new Font("Times New Roman", Font.PLAIN, 20));  
 
         
-		//以swing的形式输出图表
+		
 
 		ChartFrame barChartFrameframe = new ChartFrame("barChartFrame",barChart);
 
 		barChartFrameframe.pack();
 
 		barChartFrameframe.setVisible(true);
+		 if(view_states.hasWeek) {
+			 DataProcessor.saveAsFile(barChart, "data/weeklyReport/addOnChart.png", 800, 800); 
+		 }
 
 	}
 

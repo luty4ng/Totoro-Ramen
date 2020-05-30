@@ -16,13 +16,18 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import entity.MQDocument;
+import control.MQDocument;
 import entity.Member;
 import entity.Order;
 
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
+/**
+ * Functions: 
+ *  1. the user can input VIP number to login.
+ *  2. if the entered VIP number doesn't exist, there will be a warning.
+ */
 public class VIP_log_in extends JFrame {
 
 	private JPanel contentPane;
@@ -30,24 +35,10 @@ public class VIP_log_in extends JFrame {
 	private Order order;
 	private Member member;
 	private MQDocument doc = null;
-	/**
-	 * Launch the application.
-	 */
-/*	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					VIP_log_in frame = new VIP_log_in();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-*/
+	
 	/**
 	 * Create the frame.
+	 * @param order The order of this customer.
 	 */
 	public VIP_log_in(Order order) {
 		this.order = order;
@@ -149,7 +140,6 @@ public class VIP_log_in extends JFrame {
         btnConfirm.setFont(new Font("Times New Roman", Font.BOLD, 38));
         btnConfirm.setBounds(421, 470, 290, 70);
         contentPane.add(btnConfirm);
-        
         
         setVisible(true);
 	}
